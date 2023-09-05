@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.domain.moviegenre;
+package com.ateam.motionpickr.domain.linkingtables;
 
 import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.movie.Movie;
@@ -11,7 +11,7 @@ public class MovieGenre {
     @GeneratedValue
     private Long id;
 
-    private String title;
+//    private String title;
 
     @ManyToOne
     private Movie movie;

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
@@ -24,13 +23,16 @@ public class CSVParser {
 
     List<String> titles = new ArrayList<>();
     Set<String> setOfGenres = new HashSet<>();
+    Set<String> setOfKeywords = new HashSet<>();
 
-    public void parse() {
+    public CSVParser() {
+        this.parse();
+    }
+
+    private void parse() {
         String csvFilePath = "C:\\Users\\arjan\\IdeaProjects\\motionpickr\\datasets\\data.csv"; // Replace with your CSV file path
-
         try (Reader reader = new FileReader(csvFilePath);
              org.apache.commons.csv.CSVParser csvParser = new org.apache.commons.csv.CSVParser(reader, CSVFormat.EXCEL.withFirstRecordAsHeader())) {
-
             for (CSVRecord csvRecord : csvParser) {
                 String budget = csvRecord.get("budget");
                 String genres = csvRecord.get("genres");
@@ -55,6 +57,7 @@ public class CSVParser {
 
                 titles.add(title);
                 setOfGenres.addAll(ArrayExtractor.extract(genres, "name"));
+                setOfKeywords.addAll(ArrayExtractor.extract(keywords, "name"));
 
 
             }

@@ -1,5 +1,8 @@
 package com.ateam.motionpickr.supportclasses;
 
+import com.ateam.motionpickr.domain.keyword.Keyword;
+import com.ateam.motionpickr.domain.keyword.KeywordRepository;
+import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
 import com.ateam.motionpickr.domain.movie.Movie;
 import com.ateam.motionpickr.domain.movie.MovieRepository;
@@ -12,36 +15,41 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
     MovieRepository movieRepository;
-
     @Autowired
     GenreRepository genreRepository;
+    @Autowired
+    KeywordRepository keywordRepository;
+
+    private final CSVParser csvParser = new CSVParser();
 
     private void seedMovies(){
         long count = movieRepository.count();
         if (count == 0) {
             System.out.println("Seeding Movies:");
-
-            // TAKE DATA FROM CSVParser AND CREATE NEW MOVIE ENTITIES HERE
-            CSVParser csvParser = new CSVParser();
-            csvParser.parse();
             csvParser.getTitles().forEach(title -> {
                 movieRepository.save(new Movie(title));
             });
-
-//            movieRepository.save(new Movie("movie1"));
-            count = movieRepository.count();
         }
-        System.out.println(count + " tags in the database.");
     }
 
     private void seedGenres(){
         long count = genreRepository.count();
         if (count == 0) {
             System.out.println("Seeding Genres:");
-//            genreRepository.save(new Genre("Genre1"));
-            count = genreRepository.count();
+            csvParser.getSetOfGenres().forEach(genre -> {
+                genreRepository.save(new Genre(genre));
+            });
         }
-        System.out.println(count + " tags in the database.");
+    }
+
+    private void seedKeywords(){
+        long count = keywordRepository.count();
+        if (count == 0) {
+            System.out.println("Seeding Keywords:");
+            csvParser.getSetOfKeywords().forEach(keyword -> {
+                keywordRepository.save(new Keyword(keyword));
+            });
+        }
     }
 
     @Override
