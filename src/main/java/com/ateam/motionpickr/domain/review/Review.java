@@ -1,6 +1,7 @@
-package com.ateam.motionpickr.domain.movie;
+package com.ateam.motionpickr.domain.review;
 
 import com.ateam.motionpickr.domain.auth.User;
+import com.ateam.motionpickr.domain.movie.Movie;
 
 public class Review {
 

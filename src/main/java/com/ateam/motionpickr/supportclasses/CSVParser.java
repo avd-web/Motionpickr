@@ -1,5 +1,7 @@
 package com.ateam.motionpickr.supportclasses;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.boot.CommandLineRunner;
@@ -8,10 +10,22 @@ import org.springframework.stereotype.Component;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Component
-public class CSVParser implements CommandLineRunner {
-    public static void parse() {
+@Getter
+@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
+public class CSVParser {
+
+    List<String> titles = new ArrayList<>();
+    Set<String> setOfGenres = new HashSet<>();
+
+    public void parse() {
         String csvFilePath = "C:\\Users\\arjan\\IdeaProjects\\motionpickr\\datasets\\data.csv"; // Replace with your CSV file path
 
         try (Reader reader = new FileReader(csvFilePath);
@@ -39,24 +53,17 @@ public class CSVParser implements CommandLineRunner {
                 String voteAverage = csvRecord.get("vote_average");
                 String voteCount = csvRecord.get("vote_count");
 
-                System.out.println("Title: " + title + " Genres: " + ArrayExtractor.extract(genres, "name"));
-                System.out.println("Original title : " + originalTitle);
-                System.out.println("tagline: " + tagline);
-                System.out.println("keywords : " + ArrayExtractor.extract(keywords, "name"));
-                System.out.println("overview: " + overview);
-                System.out.println();
+                titles.add(title);
+                setOfGenres.addAll(ArrayExtractor.extract(genres, "name"));
 
 
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
 
-    }
-    @Override
-    public void run(String... args) throws Exception {
-        parse();
-    }
+
+
 }
