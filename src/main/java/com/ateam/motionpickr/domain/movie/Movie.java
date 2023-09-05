@@ -1,12 +1,29 @@
 package com.ateam.motionpickr.domain.movie;
 
+import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
+import jakarta.persistence.*;
+import lombok.Getter;
+
 import java.sql.Date;
 import java.util.List;
 
+
+@Entity
+@Getter
 public class Movie {
-    private String director,title;
-    private Date releaseDate;
-    private List<Actor> actorList;
-    private List<Genre>genreList;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String title;
+
+    @OneToMany(mappedBy = "movie")
+    private List<MovieGenre> movieGenres;
+
+    public Movie(String title) {
+        this.title = title;
+    }
+
+    public Movie(){}
 
 }
