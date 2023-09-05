@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.domain;
+package com.ateam.motionpickr.domain.movie;
 
 import java.sql.Date;
 import java.util.List;
