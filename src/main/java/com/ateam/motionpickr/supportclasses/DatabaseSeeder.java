@@ -56,5 +56,6 @@ public class DatabaseSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         seedMovies();
         seedGenres();
+        seedKeywords();
     }
 }

@@ -15,7 +15,9 @@ public class Keyword {
     @Id
     @GeneratedValue
     private Long id;
+
     private String keyword;
+
     @OneToMany(mappedBy = "keyword")
     private List<MovieKeyword> movieKeywords;
 

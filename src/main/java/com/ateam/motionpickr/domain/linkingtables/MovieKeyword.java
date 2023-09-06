@@ -1,23 +1,27 @@
 package com.ateam.motionpickr.domain.linkingtables;
 
 import com.ateam.motionpickr.domain.genre.Genre;
+import com.ateam.motionpickr.domain.keyword.Keyword;
 import com.ateam.motionpickr.domain.movie.Movie;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class MovieKeyword {
     @Id
     @GeneratedValue
     private Long id;
 
-//    private String title;
+//    private String keyword;
 
     @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @ManyToOne
-    private Genre genre;
+    @JoinColumn(name = "keyword_id")
+    private Keyword keyword;
 }
