@@ -1,6 +1,5 @@
-package com.ateam.motionpickr.domain.movie.Actor;
+package com.ateam.motionpickr.domain.cast.actor;
 
-import com.ateam.motionpickr.domain.actor.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -19,8 +19,8 @@ public class Genre {
 
     private String title;
 
-    @OneToMany(mappedBy = "genre")
-    private List<MovieGenre> movieGenres;
+    //@OneToMany(mappedBy = "genre")
+   // private List<MovieGenre> movieGenres;
 
     public Genre(String title) {
         this.title = title;
