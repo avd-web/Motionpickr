@@ -1,16 +1,22 @@
 package com.ateam.motionpickr.domain.movie;
 
-import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.Getter;
 
-import java.sql.Date;
+import com.ateam.motionpickr.domain.genre.Genre;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 import java.util.List;
 
 
 @Entity
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Movie {
     @Id
     @GeneratedValue
@@ -18,14 +24,10 @@ public class Movie {
 
     private String title;
 
-    @OneToMany(mappedBy = "movie")
-    @JsonIgnore
-    private List<MovieGenre> movieGenres;
+    @ManyToMany
+    private List<Genre> movieGenres;
 
     public Movie(String title) {
         this.title = title;
     }
-
-    public Movie(){}
-
 }
