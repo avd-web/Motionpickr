@@ -16,7 +16,7 @@ public class Movie {
 
     private String title;
 
-    @OneToMany(mappedBy = "movie")
+    @ManyToMany(mappedBy = "movie")
     private List<MovieGenre> movieGenres;
 
     public Movie(String title) {

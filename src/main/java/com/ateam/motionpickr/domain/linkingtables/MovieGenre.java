@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.naming.Name;
 
 @Entity
+@Embeddable
 @Getter
 @Setter
 public class MovieGenre {
