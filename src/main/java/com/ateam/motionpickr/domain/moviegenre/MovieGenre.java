@@ -4,7 +4,7 @@ import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.movie.Movie;
 import jakarta.persistence.*;
 
-@Entity
+//@Entity
 public class MovieGenre {
 
     @Id

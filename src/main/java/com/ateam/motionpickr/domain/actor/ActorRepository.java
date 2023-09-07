@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.domain.movie.Actor;
+package com.ateam.motionpickr.domain.actor;
 
 import com.ateam.motionpickr.domain.actor.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
