@@ -1,6 +1,7 @@
 package com.ateam.motionpickr.domain.movie;
 
 import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -18,6 +19,7 @@ public class Movie {
     private String title;
 
     @OneToMany(mappedBy = "movie")
+    @JsonIgnore
     private List<MovieGenre> movieGenres;
 
     public Movie(String title) {

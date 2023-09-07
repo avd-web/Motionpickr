@@ -21,8 +21,9 @@ public class MovieController {
         return "Hello movies!";
     }
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public List<Movie> movieList(){
+        System.out.println("Fetch movie");
         return movieRepository.findAll();
     }
 

@@ -46,7 +46,10 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        seedMovies();
-        seedGenres();
+//        seedMovies();
+//        seedGenres();
+        movieRepository.save(new Movie("Waterloo"));
+        movieRepository.save(new Movie("A bridge too far"));
+
     }
 }
