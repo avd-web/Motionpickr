@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.domain.actor;
+package com.ateam.motionpickr.domain.cast.actor;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

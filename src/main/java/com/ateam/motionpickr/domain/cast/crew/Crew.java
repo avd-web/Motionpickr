@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.domain.actor;
+package com.ateam.motionpickr.domain.cast.crew;
 
 
 import jakarta.persistence.*;
@@ -8,17 +8,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class Actor {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Crew {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private  String name;
+    private String name;
 
 
 }
