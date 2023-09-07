@@ -1,7 +1,7 @@
 package com.ateam.motionpickr.domain.genre;
 
 
-import com.ateam.motionpickr.domain.linkingtables.MovieGenre;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -19,8 +19,8 @@ public class Genre {
 
     private String title;
 
-    @OneToMany(mappedBy = "genre")
-    private List<MovieGenre> movieGenres;
+    //@OneToMany(mappedBy = "genre")
+   // private List<MovieGenre> movieGenres;
 
     public Genre(String title) {
         this.title = title;
