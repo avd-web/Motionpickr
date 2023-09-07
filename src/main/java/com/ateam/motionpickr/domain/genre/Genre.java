@@ -1,7 +1,7 @@
 package com.ateam.motionpickr.domain.genre;
 
 
-import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
