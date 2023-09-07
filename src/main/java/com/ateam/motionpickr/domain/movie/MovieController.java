@@ -18,10 +18,11 @@ public class MovieController {
     public List<Movie> getMovies() {
         return movieRepository.findAll();
     }
-    @GetMapping("title/{title}")
-    public Optional<Movie> findByTitle(@PathVariable("title") String title) {
-        return movieRepository.findByTitle(title);
-    }
 
+
+//    @GetMapping("title/{title}")
+//    public Optional<Movie> findByTitle(@PathVariable("title") String title) {
+//        return movieRepository.findByTitle(title);
+//    }
 
 }
