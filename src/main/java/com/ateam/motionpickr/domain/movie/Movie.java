@@ -35,5 +35,7 @@ public class Movie {
     private List<Cast>cast;
 
 
-
+    public Movie(String title) {
+        this.title = title;
+    }
 }
