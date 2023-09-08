@@ -13,12 +13,22 @@ public class Genre {
     Long id;
 
     @ManyToMany
+    @JoinTable(
+            name = "movie_genres",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
     private Set<Movie> moviesPerGenre = new HashSet<>();
 
     private String name;
 
-    //@OneToMany(mappedBy = "genre")
-    // private List<MovieGenre> movieGenres;
+    public Genre(String name) {
+        this.name = name;
+    }
+
+    public Genre() {
+
+    }
 
     public Long getId() {
         return id;
@@ -34,15 +44,5 @@ public class Genre {
 
     public Set<Movie> getMoviesPerGenre() {
         return moviesPerGenre;
-    }
-
-
-    //Constructor
-    public Genre(String name) {
-        this.name = name;
-    }
-
-    public Genre() {
-
     }
 }
