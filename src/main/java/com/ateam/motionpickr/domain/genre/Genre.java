@@ -1,30 +1,47 @@
 package com.ateam.motionpickr.domain.genre;
 
+import com.ateam.motionpickr.domain.movie.Movie;
+import jakarta.persistence.*;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Getter;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Getter
 public class Genre {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
 
-    private String title;
+    @ManyToMany
+    private Set<Movie> moviesPerGenre = new HashSet<>();
+
+    private String name;
 
     //@OneToMany(mappedBy = "genre")
-   // private List<MovieGenre> movieGenres;
+    // private List<MovieGenre> movieGenres;
 
-    public Genre(String title) {
-        this.title = title;
+    public Long getId() {
+        return id;
     }
 
-    public Genre(){}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Movie> getMoviesPerGenre() {
+        return moviesPerGenre;
+    }
+
+    public static Genre getWarGenre() {
+        return new Genre("War");
+    }
+
+    //Constructor
+    public Genre(String name) {
+        this.name = name;
+    }
 }
