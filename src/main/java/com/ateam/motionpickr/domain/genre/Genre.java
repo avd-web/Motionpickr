@@ -36,12 +36,13 @@ public class Genre {
         return moviesPerGenre;
     }
 
-    public static Genre getWarGenre() {
-        return new Genre("War");
-    }
 
     //Constructor
     public Genre(String name) {
         this.name = name;
+    }
+
+    public Genre() {
+
     }
 }
