@@ -56,7 +56,7 @@ public class OpenCSVParser implements CommandLineRunner {
     }
 
     private void seeder() throws IOException {
-        String fileName = "C:\\Users\\arjan\\IdeaProjects\\motionpickr\\src\\main\\java\\com\\ateam\\motionpickr\\datasets\\movies_metadata.csv";
+        String fileName = "C:\\Users\\Alexa\\Desktop\\TMDB\\movies_metadata.csv";
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
             List<String[]> movieList = reader.readAll();
             for (String[] strings : movieList.stream().skip(1).toList()) {
