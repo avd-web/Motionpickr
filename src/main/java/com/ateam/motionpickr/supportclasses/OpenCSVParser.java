@@ -6,6 +6,7 @@ import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.movie.MovieRepository;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,8 @@ import java.util.*;
 
 @Component
 public class OpenCSVParser implements CommandLineRunner {
+    @Value("${motionpickr.dir}")
+    public String fileName;
 
     @Autowired
     private MovieRepository movieRepository;
@@ -56,7 +59,7 @@ public class OpenCSVParser implements CommandLineRunner {
     }
 
     private void seeder() throws IOException {
-        String fileName = "C:\\Users\\arjan\\IdeaProjects\\motionpickr\\src\\main\\java\\com\\ateam\\motionpickr\\datasets\\movies_metadata.csv";
+
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
             List<String[]> movieList = reader.readAll();
             for (String[] strings : movieList.stream().skip(1).toList()) {
