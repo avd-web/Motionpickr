@@ -9,15 +9,14 @@ import Navbar from "./components/navbar/navbar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Header/>
-    <Navbar/>
     <BrowserRouter>
+      {" "}
+      <Header />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movie" element={<Movie />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
-
-    <Footer/>
   </React.StrictMode>
 );
