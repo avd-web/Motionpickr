@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import HomePage from "./pages/HomePage";
 import Movie from "./pages/Movie";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -10,6 +12,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movie" element={<Movie />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
