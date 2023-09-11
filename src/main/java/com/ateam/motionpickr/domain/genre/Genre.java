@@ -1,7 +1,9 @@
 package com.ateam.motionpickr.domain.genre;
 
 import com.ateam.motionpickr.domain.movie.Movie;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +15,7 @@ public class Genre {
     Long id;
 
     @ManyToMany
+    @JsonBackReference
     @JoinTable(
             name = "movie_genres",
             joinColumns = @JoinColumn(name = "genre_id"),
