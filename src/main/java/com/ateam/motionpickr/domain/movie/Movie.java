@@ -1,51 +1,29 @@
 package com.ateam.motionpickr.domain.movie;
 
-import com.ateam.motionpickr.domain.genre.Genre;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.Date;
+import java.util.List;
+
 
 @Entity
-@NoArgsConstructor
+@Getter
 public class Movie {
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     private String title;
 
-    @ManyToMany
-    @JsonManagedReference
-    @JoinTable(
-            name = "movie_genres",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id")
-    )
-    private Set<Genre> genres = new HashSet<>();
+    @OneToMany(mappedBy = "movie")
+    private List<MovieGenre> movieGenres;
 
-    public Movie(String title, Set<Genre> genres) {
-        this.genres = genres;
+    public Movie(String title) {
         this.title = title;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Movie(){}
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Set<Genre> getGenres() {
-        return genres;
-    }
 }
