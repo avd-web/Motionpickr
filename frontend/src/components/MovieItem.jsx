@@ -19,7 +19,7 @@ export default function MovieItem() {
   }, []);
 
   const loadMoreMOvies = () => {
-    setDisplay((amount) => amount + 10000);
+    setDisplay((amount) => amount + 10);
   };
 
   return (
