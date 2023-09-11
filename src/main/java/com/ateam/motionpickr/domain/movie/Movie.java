@@ -1,29 +1,45 @@
 package com.ateam.motionpickr.domain.movie;
 
-import com.ateam.motionpickr.domain.moviegenre.MovieGenre;
+import com.ateam.motionpickr.domain.genre.Genre;
 import jakarta.persistence.*;
-import lombok.Getter;
 
-import java.sql.Date;
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Getter
 public class Movie {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
 
     private String title;
 
-    @OneToMany(mappedBy = "movie")
-    private List<MovieGenre> movieGenres;
+    @ManyToMany
+    @JoinTable(
+            name = "movie_genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres = new HashSet<>();
 
-    public Movie(String title) {
+    public Movie(String title, Set<Genre> genres) {
+        this.genres = genres;
         this.title = title;
     }
 
-    public Movie(){}
+    public Long getId() {
+        return id;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
 }

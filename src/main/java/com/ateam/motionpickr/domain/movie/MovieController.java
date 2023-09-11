@@ -1,10 +1,7 @@
 package com.ateam.motionpickr.domain.movie;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +14,19 @@ public class MovieController {
     MovieRepository movieRepository;
 
     @GetMapping
-    public String getMovies() {
-        return "Hello movies!";
+    List<Movie> getMovies () {
+        return movieRepository.findAll();
     }
 
-    @GetMapping("/all")
+    @GetMapping("list")
     public List<Movie> movieList(){
+        System.out.println("Fetch movie");
         return movieRepository.findAll();
+    }
+
+    @PostMapping
+    Movie createMovie(@RequestBody Movie movie) {
+        return movieRepository.save(movie);
     }
 
 }
