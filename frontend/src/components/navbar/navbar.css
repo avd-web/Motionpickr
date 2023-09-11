@@ -1,6 +1,7 @@
 .navbar{  
     background-color: #bc81dc;
     border-radius: 20px;
-    display: grid;
+    display: flex;
+    flex-direction: row;
 
 }

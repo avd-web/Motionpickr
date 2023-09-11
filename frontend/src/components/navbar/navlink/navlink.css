@@ -1,6 +1,8 @@
-.link-container{
+div.link-container{
     border-radius:50px; 
     background-color: aquamarine;
     justify-content: center;
     align-items: center;
+    background-color: lightblue;
+    width: 100%;
 }

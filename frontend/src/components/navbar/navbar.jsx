@@ -3,6 +3,7 @@ import "./navbar.css";
 import NavLink from "../navbar/navlink/navLink.jsx";
 import { LinkData } from "./linkData";
 
+
 export default function Navbar() {
   return (
     <div className="navbar">
