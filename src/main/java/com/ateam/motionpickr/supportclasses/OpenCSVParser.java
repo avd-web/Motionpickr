@@ -16,8 +16,6 @@ import java.util.*;
 
 @Component
 public class OpenCSVParser implements CommandLineRunner {
-    @Value("${motionpickr.dir}")
-    public String fileName;
 
     @Autowired
     private MovieRepository movieRepository;
@@ -25,6 +23,8 @@ public class OpenCSVParser implements CommandLineRunner {
     @Autowired
     private GenreRepository genreRepository;
 
+    @Value("${motionpickr.dir}")
+    private String filename;
     private final Set<String> knownGenres = new HashSet<>();
 
     private Movie createMovieFromArray(String[] line) {
@@ -59,8 +59,7 @@ public class OpenCSVParser implements CommandLineRunner {
     }
 
     private void seeder() throws IOException {
-
-        try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+        try (CSVReader reader = new CSVReader(new FileReader(filename))) {
             List<String[]> movieList = reader.readAll();
             for (String[] strings : movieList.stream().skip(1).toList()) {
                 var movie = createMovieFromArray(strings);

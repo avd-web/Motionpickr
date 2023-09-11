@@ -1,12 +1,17 @@
 package com.ateam.motionpickr.domain.movie;
 
 import com.ateam.motionpickr.domain.genre.Genre;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
 public class Movie {
     @Id
     @GeneratedValue
@@ -15,6 +20,7 @@ public class Movie {
     private String title;
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
             name = "movie_genres",
             joinColumns = @JoinColumn(name = "movie_id"),
