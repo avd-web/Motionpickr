@@ -1,6 +1,5 @@
 package com.ateam.motionpickr.domain.movie.review;
 
-import com.ateam.motionpickr.domain.auth.User;
 import com.ateam.motionpickr.domain.movie.Movie;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
