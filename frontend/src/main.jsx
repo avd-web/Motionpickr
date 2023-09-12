@@ -28,8 +28,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/movie" element={<WatchList />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> <Footer/>
-      </Routes>
+        <Route path="/login" element={<Login />} /> 
+      </Routes><Footer/>
 
     </BrowserRouter>
 
