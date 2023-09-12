@@ -1,4 +1,9 @@
+var LinkData = [
+  { name: "movies", link: "/movie" },
+  { name: "home", link: "/" },
+  {name:"recommended",link:"/recommended"},
+  {name:"friends",link:"/friends"},
+  {name:"watchlist",link:"/watchlist"},
+];
 
-var LinkData= [{name:"movies", link:"/movies"},{name:"home",link:"/"}];
-
-export  {LinkData};
+export { LinkData };

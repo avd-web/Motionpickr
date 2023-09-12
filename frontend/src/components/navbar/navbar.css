@@ -1,7 +1,21 @@
-.navbar{  
-    background-color: #bc81dc;
-    border-radius: 20px;
+.navbar {
+  background-color: #bc81dc;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.navbar-list-container {
+  display: none;
+}
+
+.navbar:hover {
+  .navbar-list-container {
+    display: block;
+  }
+
+  .list-container {
     display: flex;
     flex-direction: row;
+  }
 
 }
