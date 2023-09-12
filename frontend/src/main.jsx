@@ -27,10 +27,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/friends" element={<Friends />} />
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/movie" element={<WatchList />} />
-      </Routes> <Footer/>
 
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> 
+        <Footer/>
       </Routes>
 
     </BrowserRouter>
