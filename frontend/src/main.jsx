@@ -4,13 +4,35 @@ import HomePage from "./pages/HomePage";
 import Movie from "./pages/Movie";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import Friends from "./pages/friends";
+import ViewMovie from "./pages/viewMovie";
+import Recommended from "./pages/recommended";
+import WatchList from "./pages/watchList";
+
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+  
+    <BrowserRouter>  <Header/>
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movie" element={<Movie />} />
-      </Routes>
+
+        <Route path="/movie/:id" element={<ViewMovie />} />
+        <Route path="/friends" element={<Friends />} />
+        <Route path="/recommended" element={<Recommended />} />
+        <Route path="/movie" element={<WatchList />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} /> 
+      </Routes><Footer/>
+
     </BrowserRouter>
+
+   
   </React.StrictMode>
 );

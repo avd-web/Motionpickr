@@ -1,30 +1,51 @@
 package com.ateam.motionpickr.domain.genre;
 
+import com.ateam.motionpickr.domain.movie.Movie;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import org.springframework.context.annotation.Lazy;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Getter;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Getter
 public class Genre {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
 
-    private String title;
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(
+            name = "movie_genres",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    private Set<Movie> moviesPerGenre = new HashSet<>();
 
-    //@OneToMany(mappedBy = "genre")
-   // private List<MovieGenre> movieGenres;
+    private String name;
 
-    public Genre(String title) {
-        this.title = title;
+    public Genre(String name) {
+        this.name = name;
     }
 
-    public Genre(){}
+    public Genre() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Movie> getMoviesPerGenre() {
+        return moviesPerGenre;
+    }
 }

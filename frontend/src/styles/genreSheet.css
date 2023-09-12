@@ -1,0 +1,10 @@
+.dropdown-genre-content {
+    display: none;
+    min-width: 160px;
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-genre:hover .dropdown-genre-content{
+    display: block;
+}
