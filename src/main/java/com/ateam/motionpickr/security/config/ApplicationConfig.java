@@ -1,6 +1,6 @@
-package com.ateam.motionpickr.config;
+package com.ateam.motionpickr.security.config;
 
-import com.ateam.motionpickr.domain.Users.UserRepository;
+import com.ateam.motionpickr.security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

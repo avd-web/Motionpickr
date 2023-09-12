@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.config;
+package com.ateam.motionpickr.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
