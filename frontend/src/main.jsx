@@ -27,10 +27,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/friends" element={<Friends />} />
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/movie" element={<WatchList />} />
-
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> 
-        <Footer/>
+        <Route path="/login" element={<Login />} /> z<Footer/>
       </Routes>
 
     </BrowserRouter>
