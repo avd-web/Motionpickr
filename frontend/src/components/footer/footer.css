@@ -1,0 +1,13 @@
+.footer{ 
+    position: sticky; 
+    bottom:10px; 
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer div{
+    background-color: rgb(119, 184, 184);
+    border-radius: 50px;
+}
