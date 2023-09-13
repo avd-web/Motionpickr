@@ -2,6 +2,9 @@ import React from "react";
 import "../header/header.css";
 import Navbar from "../navbar/navbar";
 
+import {LoginLinkData} from "../navbar/loginLinkData";
+import { LinkData } from "../navbar/linkData";
+
 export default function Header() {
   return (
     <div className="header">
@@ -9,9 +12,9 @@ export default function Header() {
         <h1>motionpickr</h1>
       </div>
       <div className="header-content">
-        <Navbar />
+        <Navbar links={LinkData} />
         <div>
-          <p>log me in/out/register</p>
+          <Navbar links={LoginLinkData} />
         </div>
       </div>
     </div>
