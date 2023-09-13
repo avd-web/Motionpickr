@@ -10,9 +10,11 @@ import Friends from "./pages/friends";
 import ViewMovie from "./pages/viewMovie";
 import Recommended from "./pages/recommended";
 import WatchList from "./pages/watchList";
+import GenreInfo from "./pages/GenreInfo";
 
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Genre from "./pages/Genre";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -22,13 +24,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movie" element={<Movie />} />
-
         <Route path="/movie/:id" element={<ViewMovie />} />
         <Route path="/friends" element={<Friends />} />
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/watchlist" element={<WatchList />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} /> 
+        <Route path="/genre/:genreid" element = {<GenreInfo/>} />
+        <Route path="/genre" element = {<Genre/>} />
       </Routes><Footer/>
 
     </BrowserRouter>

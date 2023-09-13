@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/movieSheet.css";
+import "../../styles/movieSheet.css";
 
 export default function MovieItem() {
   const [movies, setMovies] = useState([{}]);

@@ -1,5 +1,5 @@
 import React from "react";
-import GenreItem from "../components/GenreItem";
+import GenreItem from "../components/homepagecomponents/GenreDropDown";
 
 export default function HomePage() {
 
