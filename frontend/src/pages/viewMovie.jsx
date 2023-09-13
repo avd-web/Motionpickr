@@ -12,7 +12,7 @@ export default function ViewMovie() {
       setMovie(movi);
     }
 
-    useEffect(fetchMovie());
+    useEffect(fetchMovie(),[]);
   return (
     <div>
       {movie===null?null:movie.id}
