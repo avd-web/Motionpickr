@@ -125,6 +125,8 @@ export default function Register() {
             <input
               type="password"
               id="password-input"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.password}
               onChange={handlePassword}
             />
