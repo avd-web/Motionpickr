@@ -1,20 +1,38 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/registerSheet.css";
+import axios from "axios";
 
 export default function Register() {
   const [user, setUser] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
+    email: "",
     password: "",
     secondpassword: "",
   });
 
-  const handleName = (e) => {
+
+  const handleLastname = (e) => {
+    setUser({
+      ...user, 
+      lastname : e.target.value,
+    })
+  }
+
+  const handleFirstname = (e) => {
     setUser({
       ...user,
-      name: e.target.value,
+      firstname: e.target.value,
     });
   };
+
+  const handleEmail = (e) => {
+    setUser({
+      ...user,
+      email : e.target.value,
+    })
+  }
 
   const handlePassword = (e) => {
     setUser({
@@ -22,6 +40,7 @@ export default function Register() {
       password: e.target.value,
     });
   };
+
 
   const handleSecondPassword = (e) => {
     setUser({
@@ -33,14 +52,28 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: Regex for certain password requirements needs to be implemented
-    user.password === user.secondpassword
-      ? console.log("succes")
-      : alert("passwords dont match!");
 
-    console.log(user);
+    if (user.password === user.secondpassword) {
+      console.log("succes");
+      
+      const postUser = {
+        firstname: user.firstname,
+        lastname : user.lastname,
+        email : user.email,
+        password: user.password,
+        // role : "USER",
+      }
+      console.log(postUser)
+
+      axios.post("http://localhost:8080/api/v1/auth/register", postUser);
+
+
+    } else alert("passwords dont match!");
 
     setUser({
-      name: "",
+      firstname: "",
+      lastname : "",
+      email : "",
       password: "",
       secondpassword: "",
     });
@@ -48,7 +81,7 @@ export default function Register() {
 
   return (
     <div className="login-container">
-      <h1 id="login-header"> Sign in </h1>
+      <h1 id="login-header"> Register </h1>
       <div className="login-container2">
         <form onSubmit={handleSubmit}>
           <div className="login-input name">
@@ -58,12 +91,37 @@ export default function Register() {
             <input
               type="text"
               id="usename-input"
-              onChange={handleName}
-              value={user.name}
+              onChange={handleFirstname}
+              value={user.firstname}
+            />
+          </div>
+          <div className="login-input name">
+            <label htmlFor="username-input" value={user.name} id="label-name">
+              Your name:
+            </label>
+            <input
+              type="text"
+              id="usename-input"
+              onChange={handleLastname}
+              value={user.lastname}
+            />
+          </div>
+          <div className="login-input name">
+            <label htmlFor="username-input" value={user.name} id="label-name">
+              Your e-mail:
+            </label>
+            <input
+              type="text"
+              id="usename-input"
+              onChange={handleEmail}
+              value={user.email}
             />
           </div>
           <div className="login-input password">
-            <label htmlFor="password-input" id="label-password"> Your Password: </label>
+            <label htmlFor="password-input" id="label-password">
+              {" "}
+              Your Password:{" "}
+            </label>
             <input
               type="password"
               id="password-input"
@@ -72,7 +130,10 @@ export default function Register() {
             />
           </div>
           <div className="login-input passwordcheck">
-            <label htmlFor="second-password-input" id="label-check"> Re-enter password: </label>
+            <label htmlFor="second-password-input" id="label-check">
+              {" "}
+              Re-enter password:{" "}
+            </label>
             <input
               type="password"
               id="second-password-input"
