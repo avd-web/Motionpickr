@@ -8,7 +8,7 @@ export default function WatchList() {
       //const data=axios.get("");
     }
 
-    useEffect(()=>fetchWatchList())
+    useEffect(()=>fetchWatchList(),[])
   return (
     <div>watchList</div>
   )
