@@ -23,7 +23,7 @@ export default function Login() {
       "http://localhost:8080/api/v1/auth/authenticate",
       authBody
     );
-    console.log(authResp);
+    console.log(authResp.data);
     //todo add token to sessionstorage
 
     emptyForm();
