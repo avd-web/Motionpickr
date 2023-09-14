@@ -15,7 +15,6 @@ import GenreInfo from "./pages/GenreInfo";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Genre from "./pages/Genre";
-import Hero from "./components/hero/Hero";
 import "./styles/MAINstyles.css";
 import "./styles/normalize.css";
 

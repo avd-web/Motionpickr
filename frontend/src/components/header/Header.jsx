@@ -9,7 +9,7 @@ export default function Header() {
     <header>
       <nav class="nav">
         <a class="nav__brand" href="/">
-          <img src="images/logo.svg" alt="" />
+          {/* <img src="images/logo.svg" alt="" /> */}
         </a>
 
         <ul className="list nav__list">

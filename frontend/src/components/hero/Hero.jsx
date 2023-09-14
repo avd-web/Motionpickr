@@ -16,7 +16,7 @@ export default function Hero() {
               button
             </a>
           </header>
-          <picture data-aos="zoom-in">
+          {/* <picture data-aos="zoom-in">
             <source
               type="image/webp"
               srcset="images/banner.webp 1x, images/banner@2x.webp 2x"
@@ -26,7 +26,7 @@ export default function Hero() {
               srcset="images/banner.png 1x, images/banner@2x.png 2x"
             />
             <img className="hero__image" src="images/banner.png" alt="" />
-          </picture>
+          </picture> */}
         </div>
       </section>
     </>
