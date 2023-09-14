@@ -1,11 +1,39 @@
 import React from "react";
-import "../footer/footer.css";
+// import "../footer/footer.css";
+import "../../styles/MAINstyles.css";
 
 export default function Footer() {
   return (
-    <div className="footer">
-      <div className="credits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nihil assumenda dolorum adipisci animi nam. Culpa architecto atque voluptatem ducimus esse at maxime doloribus soluta tempora, eum quod nisi necessitatibus!</div>
-      <div className="about">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio consequuntur veritatis culpa nulla tempore, sunt eveniet. Modi quos, eos repellat voluptate rem cumque illum perspiciatis a. Vel eaque soluta delectus!</div>
+    <div>
+      <footer className="block block--dark footer">
+        <div className="container grid footer__sections">
+          <section className="footer__section">
+            <div>
+              <h2 className="footer__heading">Links</h2>
+              <svg className="icon icon--white collapsible__chevron"></svg>
+            </div>
+            <div>
+              <ul className="list">
+                <li>
+                  <a href="#">Movies</a>
+                </li>
+                <li>
+                  <a href="#">Recommended</a>
+                </li>
+                <li>
+                  <a href="#">Watchlist</a>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <div className="footer__brand">
+            <img src="images/logo.svg" alt="" />
+            <p className="footer__copyright">
+              Copyright 2023 Ateam development
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

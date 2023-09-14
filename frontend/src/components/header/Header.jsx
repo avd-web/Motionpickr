@@ -13,10 +13,6 @@ export default function Header() {
           <img src="images/logo.svg" alt="" />
         </a>
 
-        <svg class="icon icon--white">
-          {/* <use xlink:href="images/sprite.svg#menu"></use> */}
-        </svg>
-
         <ul className="list nav__list">
           <Navbar links={LinkData} />
           <Navbar links={LoginLinkData} />

@@ -657,7 +657,7 @@ a {
 .nav {
   background: #000;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding: 1rem;
   align-items: center;
