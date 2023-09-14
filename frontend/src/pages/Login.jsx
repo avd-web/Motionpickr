@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
-import NavLink from "../components/navbar/navlink/navLink";
+import NavLink from "../components/navbar/navLink";
 
 export default function Login() {
   const [show, setShow] = useState(false);
