@@ -30,6 +30,7 @@ export default function Login() {
     //todo add token to sessionstorage
     let demo =await axios.get("http://localhost:8080/api/v1/demo-controller",AuthHeader);
     console.log(demo);
+    console.log(AuthHeader);
     emptyForm();
   };
   const emptyForm = () => {
@@ -70,8 +71,7 @@ export default function Login() {
           <button type="submit">login</button>
         </form>
         <button onClick={showPassword} id="show-button">
-          {" "}
-          show{" "}
+         show
         </button>
         <NavLink name={"register"} link={"/register"} />
       </div>
