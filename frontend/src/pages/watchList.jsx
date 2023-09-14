@@ -1,15 +1,12 @@
-import {React,useEffect,useState }from 'react'
-import axios from "axios";
+import { React, useEffect, useState } from "react";
 
 export default function WatchList() {
-    const [watchList,setwatchList]=useState([]);
+  const [watchList, setwatchList] = useState([]);
 
-    const fetchWatchList=()=>{
-      //const data=axios.get("");
-    }
+  const fetchWatchList = () => {
+    //const data=axios.get("");
+  };
 
-    useEffect(()=>fetchWatchList(),[])
-  return (
-    <div>watchList</div>
-  )
+  useEffect(() => fetchWatchList());
+  return <div>watchList</div>;
 }

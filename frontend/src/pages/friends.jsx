@@ -1,13 +1,10 @@
-import {React,useEffect,useState }from 'react'
-import axios from "axios";
+import { React, useEffect, useState } from "react";
 
 export default function Friends() {
-    const [friends,setFriends]=useState([]);
+  const [friends, setFriends] = useState([]);
 
-    const fetchFriendsList=()=>{}
+  const fetchFriendsList = () => {};
 
-    useEffect(()=>fetchFriendsList)
-  return (
-    <div>Friends</div>
-  )
+  useEffect(() => fetchFriendsList);
+  return <div>Friends</div>;
 }
