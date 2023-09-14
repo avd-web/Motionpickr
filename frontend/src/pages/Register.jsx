@@ -93,6 +93,7 @@ export default function Register() {
               id="usename-input"
               onChange={handleFirstname}
               value={user.firstname}
+              required
             />
           </div>
           <div className="login-input name">
@@ -104,6 +105,7 @@ export default function Register() {
               id="usename-input"
               onChange={handleLastname}
               value={user.lastname}
+              required
             />
           </div>
           <div className="login-input name">
@@ -115,6 +117,7 @@ export default function Register() {
               id="usename-input"
               onChange={handleEmail}
               value={user.email}
+              required
             />
           </div>
           <div className="login-input password">
@@ -125,6 +128,8 @@ export default function Register() {
             <input
               type="password"
               id="password-input"
+              required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.password}
               onChange={handlePassword}
             />
@@ -136,6 +141,7 @@ export default function Register() {
             </label>
             <input
               type="password"
+              required
               id="second-password-input"
               pattern=""
               value={user.secondpassword}
