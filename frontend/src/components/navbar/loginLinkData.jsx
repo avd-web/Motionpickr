@@ -3,4 +3,5 @@ var LoginLinkData = [
     {name:"register",link:"/register"},
   ];
 
+
 export {LoginLinkData};
