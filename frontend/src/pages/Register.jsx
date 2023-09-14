@@ -137,6 +137,7 @@ export default function Register() {
             <input
               type="password"
               id="second-password-input"
+              pattern=""
               value={user.secondpassword}
               onChange={handleSecondPassword}
             />

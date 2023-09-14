@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
-import {GiMeeple} from 'react-icons/gi'
-import { Link } from "react-router-dom";
 import NavLink from "../components/navbar/navlink/navLink";
 
 export default function Login() {
     const[show, setShow] = useState(false);
+
+    
 
     const showPassword = () => {
        setShow(!show);

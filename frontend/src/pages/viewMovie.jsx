@@ -8,11 +8,13 @@ export default function ViewMovie() {
     const [movie,setMovie]=useState({});
 
     const fetchMovie= async()=>{
-      const movi = await axios.get("http://localhost:8080/api/v1/movie/"+id);
+      const movi = await axios.get(`http://localhost:8080/api/v1/movie/${id}`);
       setMovie(movi);
     }
 
     useEffect(fetchMovie());
+
+
   return (
     <div>
       {movie===null?null:movie.id}
