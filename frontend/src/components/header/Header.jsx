@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/MAINstyles.css";
 import Navbar from "../navbar/navbar";
 
 import { LoginLinkData } from "../navbar/loginLinkData";

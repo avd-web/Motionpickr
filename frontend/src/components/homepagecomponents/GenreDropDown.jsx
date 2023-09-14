@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../../styles/genreDropDown.css";
 import { Link } from "react-router-dom";
 
 export default function GenreItem() {
@@ -12,7 +11,6 @@ export default function GenreItem() {
     setGenres(genres.data);
   };
 
-
   useEffect(() => {
     fetchGenre();
     console.log(genres);
@@ -23,7 +21,9 @@ export default function GenreItem() {
       <h2>genre</h2>
       {genres
         ? genres.map((genre) => (
-            <Link to= {`/genre/${genre.id}`} key={genre.id} 
+            <Link
+              to={`/genre/${genre.id}`}
+              key={genre.id}
               className="dropdown-genre-content"
               value={genre.id}
             >

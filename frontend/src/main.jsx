@@ -16,6 +16,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Genre from "./pages/Genre";
 import Hero from "./components/hero/Hero";
+import "./styles/MAINstyles.css";
+import "./styles/normalize.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

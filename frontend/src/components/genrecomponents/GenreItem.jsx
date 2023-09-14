@@ -1,6 +1,4 @@
 import React from "react";
-import "../../styles/normalize.css";
-import "../../styles/genreItemSheet.scss";
 import { Link } from "react-router-dom";
 
 export default function GenreItem({ genre }) {
