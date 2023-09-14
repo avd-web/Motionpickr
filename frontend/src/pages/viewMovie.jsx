@@ -1,23 +1,30 @@
-import {React,useEffect,useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import { AuthHeader } from "../auth/authorization";
 
 export default function ViewMovie() {
-    const {id}=useParams();
-    const [movie,setMovie]=useState({});
+  const { id } = useParams();
+  const [movie, setMovie] = useState({});
 
-    const fetchMovie= async()=>{
-      const movi = await axios.get(`http://localhost:8080/api/v1/movie/${id}`);
-      setMovie(movi);
-    }
-
-    useEffect(fetchMovie());
-
-
+  useEffect(() => {
+    const fetchMovie = async () => {
+      const data = await axios.get(
+        "http://localhost:8080/api/v1/movie/" + id,
+        AuthHeader
+      );
+      setMovie(data.data);
+      console.log(movie.genres[1]);
+    };
+    fetchMovie();
+  }, []);
   return (
     <div>
-      {movie===null?null:movie.id}
+      <h2>
+        {movie===null?null: movie.title}
+      
+      
+      </h2>
     </div>
-  )
+  );
 }

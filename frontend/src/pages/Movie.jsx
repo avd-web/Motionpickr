@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieList from "../components/moviecomponents/MovieList";
+import MovieList from "../components/moviecomponents/MovieItem";
 import AlphabetBar from "../components/moviecomponents/AlphabetBar";
 import axios from "axios";
 import MovieSearch from "../components/moviecomponents/MovieSearch";
@@ -34,7 +34,7 @@ export default function Movie() {
       <AlphabetBar updateMovies={updateMovie} />
       <MovieSearch updateMovies={updateMovie} />
       {movies.map((movie) => (
-        <MovieList movie={movie} key={movie.id}/>
+        <MovieList movie={movie} key={movie.id} />
       ))}
     </div>
   );
