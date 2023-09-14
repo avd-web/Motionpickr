@@ -1,14 +1,14 @@
 import React from "react";
 import GenreItem from "../components/homepagecomponents/GenreDropDown";
+import Hero from "../components/hero/Hero";
+import MovieItem from "../components/moviecomponents/MovieItem";
 
 export default function HomePage() {
-
   return (
-    <div>
-      <div>
-        <h1> Home  </h1>
+    <>
+      <Hero></Hero>
       <GenreItem />
-      </div>
-    </div>
+      <MovieItem />
+    </>
   );
 }

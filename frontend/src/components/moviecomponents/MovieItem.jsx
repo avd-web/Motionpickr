@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../styles/movieSheet.css";
 
 export default function MovieItem() {
   const [movies, setMovies] = useState([{}]);
@@ -33,7 +32,7 @@ export default function MovieItem() {
               <p className="text-items item1"> {movie.title} </p>
               <p className="text-items item2"> description </p>
               <p className="text-items item3"> score </p>
-              <p className="text-items button" > add </p>
+              <p className="text-items button"> add </p>
             </div>
           </div>
         ))

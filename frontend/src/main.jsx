@@ -15,12 +15,13 @@ import GenreInfo from "./pages/GenreInfo";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Genre from "./pages/Genre";
-
+import "./styles/MAINstyles.css";
+import "./styles/normalize.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-  
-    <BrowserRouter>  <Header/>
+    <BrowserRouter>
+      <Header />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movie" element={<Movie />} />
@@ -29,13 +30,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/watchlist" element={<WatchList />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> 
-        <Route path="/genre/:genreid" element = {<GenreInfo/>} />
-        <Route path="/genre" element = {<Genre/>} />
-      </Routes><Footer/>
-
+        <Route path="/login" element={<Login />} />
+        <Route path="/genre/:genreid" element={<GenreInfo />} />
+        <Route path="/genre" element={<Genre />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
-
-   
   </React.StrictMode>
 );
