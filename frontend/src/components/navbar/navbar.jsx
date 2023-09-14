@@ -5,7 +5,7 @@ export default function Navbar({ links }) {
   return (
     <>
       {links.map((item) => (
-        <li className="nav__item">
+        <li className="nav__item" key={item.name}>
           <NavLink name={item.name} link={item.link} />
         </li>
       ))}

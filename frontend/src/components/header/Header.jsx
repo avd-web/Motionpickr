@@ -7,8 +7,8 @@ import { LinkData } from "../navbar/linkData";
 export default function Header() {
   return (
     <header>
-      <nav class="nav">
-        <a class="nav__brand" href="/">
+      <nav className="nav">
+        <a className="nav__brand" href="/">
           {/* <img src="images/logo.svg" alt="" /> */}
         </a>
 

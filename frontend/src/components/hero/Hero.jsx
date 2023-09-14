@@ -6,7 +6,7 @@ export default function Hero() {
       <section className="block block--dark block--skewed-left hero">
         <div className="container grid grid--1x2">
           <header className="block__header hero__content">
-            <h1 data-aos="fade-right" class="block__heading">
+            <h1 data-aos="fade-right" className="block__heading">
               Find your way, pick your movies!
             </h1>
             <p className="hero__tagline">
