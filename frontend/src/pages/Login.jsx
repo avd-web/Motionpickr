@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
-import { GiMeeple } from "react-icons/gi";
-import { Link } from "react-router-dom";
 import NavLink from "../components/navbar/navlink/navLink";
 import axios from "axios";
+import { AuthHeader } from "../auth/authorization";
 
 export default function Login() {
   const [show, setShow] = useState(false);
@@ -17,6 +16,7 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let authBody = { email: email, password: password };
+    console.log(authBody);
 
     //todo add /login endpoint
     let authResp = await axios.post(
@@ -24,8 +24,12 @@ export default function Login() {
       authBody
     );
     console.log(authResp.data);
-    //todo add token to sessionstorage
 
+    sessionStorage.setItem("access_token",authResp.data.access_token);
+    sessionStorage.setItem("refres_token",authResp.data.refresh_token); 
+    //todo add token to sessionstorage
+    let demo =await axios.get("http://localhost:8080/api/v1/demo-controller",AuthHeader);
+    console.log(demo);
     emptyForm();
   };
   const emptyForm = () => {
