@@ -1,11 +1,9 @@
 var LinkData = [
-  { name: "movies", link: "/movie" },
-  { name: "home", link: "/" },
-  {name:"recommended",link:"/recommended"},
-  {name:"friends",link:"/friends"},
-  {name:"watchlist",link:"/watchlist"},
-  {name:"login",link:"/login"},
-  {name:"register",link:"/register"},
+  { name: "Movies", link: "/movie" },
+  // { name: "home", link: "/" },
+  { name: "Recommended", link: "/recommended" },
+  // { name: "friends", link: "/friends" },
+  { name: "Watchlist", link: "/watchlist" },
 ];
 
 export { LinkData };

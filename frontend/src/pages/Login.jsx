@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
-import NavLink from "../components/navbar/navlink/navLink";
+import NavLink from "../components/navbar/navLink";
 
 export default function Login() {
-    const[show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-    
-
-    const showPassword = () => {
-       setShow(!show);
-    }
-
+  const showPassword = () => {
+    setShow(!show);
+  };
 
   return (
     <div className="register-container">
@@ -24,10 +21,13 @@ export default function Login() {
           <label htmlFor="password" id="password-label">
             Enter password:
           </label>
-          <input type={show ? "text" : "password"} id="password" /> 
+          <input type={show ? "text" : "password"} id="password" />
         </form>
-        <button onClick={showPassword} id="show-button"> show </button>
-        <NavLink name={"register"} link={"/register"}/>
+        <button onClick={showPassword} id="show-button">
+          {" "}
+          show{" "}
+        </button>
+        <NavLink name={"register"} link={"/register"} />
       </div>
     </div>
   );
