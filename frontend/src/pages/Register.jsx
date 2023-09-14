@@ -53,7 +53,6 @@ export default function Register() {
     e.preventDefault();
     //TODO: Regex for certain password requirements needs to be implemented
 
-
     if (user.password === user.secondpassword) {
       console.log("succes");
       
@@ -144,6 +143,7 @@ export default function Register() {
               type="password"
               required
               id="second-password-input"
+              pattern=""
               value={user.secondpassword}
               onChange={handleSecondPassword}
             />
