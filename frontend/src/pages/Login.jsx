@@ -25,11 +25,14 @@ export default function Login() {
     );
     console.log(authResp.data);
 
-    sessionStorage.setItem("access_token",authResp.data.access_token);
-    sessionStorage.setItem("refres_token",authResp.data.refresh_token); 
+    sessionStorage.setItem("access_token", authResp.data.access_token);
+    sessionStorage.setItem("refres_token", authResp.data.refresh_token);
     //todo add token to sessionstorage
-    console.log(AuthHeader);
-    let demo =await axios.get("http://localhost:8080/api/v1/demo-controller",AuthHeader);
+    console.log(AuthHeader());
+    let demo = await axios.get(
+      "http://localhost:8080/api/v1/demo-controller",
+      AuthHeader()
+    );
     console.log(demo);
     emptyForm();
   };
