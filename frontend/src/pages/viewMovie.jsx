@@ -2,6 +2,8 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthHeader } from "../auth/authorization";
+import AddReview from "../components/reviews/addReview";
+import ViewReview from "../components/reviews/viewReview";
 
 export default function ViewMovie() {
   const { id } = useParams();
@@ -25,6 +27,7 @@ export default function ViewMovie() {
       
       
       </h2>
+      <ViewReview movie_id={id}/>
     </div>
   );
 }

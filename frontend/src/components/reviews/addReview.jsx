@@ -2,17 +2,20 @@ import axios, { Axios } from "axios";
 import React, { useState } from "react";
 import { AuthHeader } from "../../auth/authorization";
 
-export default function addReview({movie_id,user_id}) {
+export default function AddReview({movie_id}) {
   const [review, setReview] = useState("");
 
   const reviewBody=()=>{
     return {
+        movie_id:movie_id,
+        email:sessionStorage.getItem("user_email"),
+        review:review
 
     }
   }
 
   const handleSubmit=(ev)=>{ev.preventDefault();
-    axios.post("http://localhost:8080/api/v1/review/add/",AuthHeader())
+    axios.post("http://localhost:8080/api/v1/review/add/",reviewBody,AuthHeader())
   }
 
   return (
