@@ -1,6 +1,7 @@
 package com.ateam.motionpickr.domain.movie.review;
 
 import com.ateam.motionpickr.domain.movie.Movie;
+import com.ateam.motionpickr.security.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,11 +20,12 @@ public class Review {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    //many to one
     @ManyToOne
     @JoinColumn(name = "movie_id")
     Movie movie;
-    //many to one
-    //User reviewer;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
     String comment;
 }
