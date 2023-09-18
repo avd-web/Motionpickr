@@ -1,5 +1,5 @@
 export const AuthHeader =
-  sessionStorage.getItem === null
+  sessionStorage.getItem("access_token") === null
     ? null
     : {
         headers: {
