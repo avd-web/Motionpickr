@@ -143,7 +143,7 @@ export default function Register() {
               type="password"
               required
               id="second-password-input"
-              pattern=""
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.secondpassword}
               onChange={handleSecondPassword}
             />
