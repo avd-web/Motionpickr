@@ -24,7 +24,7 @@ public class ReviewController {
     public List<Review> getByMovie(@PathVariable("id") long id){
         return reviewRepository.findByMovie(movieRepository.findById(id).orElseThrow());
     }
-    @PostMapping
+    @PostMapping("add")
     public void addMovie(@RequestBody ReviewDto reviewDto){
         Review dataReview=new Review();
         dataReview.setComment(reviewDto.getReview());

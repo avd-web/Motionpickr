@@ -25,6 +25,7 @@ export default function Login() {
     );
     console.log(authResp.data);
 
+    sessionStorage.clear();
     sessionStorage.setItem("access_token", authResp.data.access_token);
     sessionStorage.setItem("refres_token", authResp.data.refresh_token);
     sessionStorage.setItem("user_email",email);

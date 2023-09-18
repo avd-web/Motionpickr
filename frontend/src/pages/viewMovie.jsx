@@ -28,6 +28,7 @@ export default function ViewMovie() {
       
       </h2>
       <ViewReview movie_id={id}/>
+      <AddReview id={id}/>
     </div>
   );
 }
