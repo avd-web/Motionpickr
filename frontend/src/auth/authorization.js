@@ -1,8 +1,8 @@
-export const AuthHeader =
+export const AuthHeader = () =>
   sessionStorage.getItem("access_token") === null
     ? null
     : {
         headers: {
-          Authorization: 'Bearer '+sessionStorage.getItem("access_token"),
+          Authorization: "Bearer " + sessionStorage.getItem("access_token"),
         },
       };
