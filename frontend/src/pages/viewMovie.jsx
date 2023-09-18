@@ -11,7 +11,7 @@ export default function ViewMovie() {
     const fetchMovie = async () => {
       const data = await axios.get(
         "http://localhost:8080/api/v1/movie/" + id,
-        AuthHeader
+        AuthHeader()
       );
       setMovie(data.data);
       console.log(movie.genres[1]);
