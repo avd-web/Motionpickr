@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
-import NavLink from "../components/navbar/navlink/navLink";
 import axios from "axios";
 import { AuthHeader } from "../auth/authorization";
+import NavLink from "../components/navbar/navLink";
 
 export default function Login() {
   const [show, setShow] = useState(false);
