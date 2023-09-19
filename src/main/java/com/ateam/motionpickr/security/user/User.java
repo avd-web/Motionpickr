@@ -1,5 +1,6 @@
 package com.ateam.motionpickr.security.user;
 
+import com.ateam.motionpickr.domain.movie.Movie;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,9 @@ public class User implements UserDetails {
     private String lastname;
     private String email;
     private String password;
+
+    @ManyToMany
+    private List<Movie>watchList;
 
     @Enumerated(EnumType.STRING)
     private Role role;
