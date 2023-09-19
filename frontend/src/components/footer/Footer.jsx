@@ -13,13 +13,16 @@ export default function Footer() {
             <div>
               <ul className="list">
                 <li>
-                  <a href="#">Movies</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="#">Recommended</a>
+                  <a href="/movie">Movies</a>
                 </li>
                 <li>
-                  <a href="#">Watchlist</a>
+                  <a href="/recommended">Recommended</a>
+                </li>
+                <li>
+                  <a href="/watchlist">Watchlist</a>
                 </li>
               </ul>
             </div>
