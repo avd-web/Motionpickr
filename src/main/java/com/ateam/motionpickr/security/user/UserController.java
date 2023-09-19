@@ -15,9 +15,10 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping()
-    public void getUser(UserDto userDto) {
-        Optional<User> userEmail = userRepository.findByEmail(userDto.getEmail());
+    @GetMapping("{email}")
+    public UserDto getUser(@PathVariable String email) {
+        Optional<User> userEmail = userRepository.findByEmail(email);
+        return UserDto.toDto(userEmail.orElseThrow());
 
     }
 }

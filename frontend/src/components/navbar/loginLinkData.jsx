@@ -1,3 +1,3 @@
-var LoginLinkData = [{ name: "ACCOUNT", link: "/account" }];
+var LoginLinkData = [{ name: "ACCOUNT", link: "/user" }];
 
 export { LoginLinkData };

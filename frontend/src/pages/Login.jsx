@@ -22,7 +22,6 @@ export default function Login() {
 
     sessionStorage.setItem("access_token", authResp.data.access_token);
     sessionStorage.setItem("refres_token", authResp.data.refresh_token);
-    sessionStorage.setItem("user_email",email);
 
     console.log(AuthHeader());
     let demo = await axios.get(
