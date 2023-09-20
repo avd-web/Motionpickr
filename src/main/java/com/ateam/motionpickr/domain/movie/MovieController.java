@@ -4,9 +4,14 @@ import com.ateam.motionpickr.domain.genre.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -18,11 +23,6 @@ public class MovieController {
 
     @Autowired
     GenreRepository genreRepository;
-
-//    @GetMapping
-//    List<Movie> getMovies() {
-//        return movieRepository.findAll();
-//    }
 
     @GetMapping("{id}")
     @ResponseBody
@@ -38,17 +38,29 @@ public class MovieController {
 
 
     @GetMapping
-    public Page<Movie> findAll(@RequestParam int page, @RequestParam int size) {
-        PageRequest moviePage = PageRequest.of(page, size);
-        return movieRepository.findAll(moviePage);
+    public ResponseEntity<Map<String, Object>> findAll(@RequestParam int page, @RequestParam int size) {
+        Pageable searchMovie = PageRequest.of(page, size);
+        Page<Movie> searchPage = movieRepository.findAll(searchMovie);
+        List<Movie> movies = searchPage.getContent();
+        Map<String, Object> response = new HashMap<>();
+        response.put("movies", movies);
+        response.put("currentPage", searchPage.getNumber());
+        response.put("totalItems", searchPage.getTotalElements());
+        response.put("totalPages", searchPage.getTotalPages());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("letter/{letter}")
-    public List<Movie> findByLetter(@PathVariable("letter") String letter) {
-        System.out.println("Start loading the letter");
-        List<Movie> alphabet = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter);
-        System.out.println("End loading the letter");
-        return alphabet;
+    public ResponseEntity<Map<String, Object>> findByLetter(@PathVariable("letter") String letter, @RequestParam int page, @RequestParam int size) {
+        Pageable searchMovie = PageRequest.of(page, size);
+        Page<Movie> searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
+        List<Movie> movies = searchPage.getContent();
+        Map<String, Object> response = new HashMap<>();
+        response.put("movies", movies);
+        response.put("currentPage", searchPage.getNumber());
+        response.put("totalItems", searchPage.getTotalElements());
+        response.put("totalPages", searchPage.getTotalPages());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/genre/{id}")
@@ -59,14 +71,17 @@ public class MovieController {
 
 
     @GetMapping("search/{search}")
-    public List<Movie> containsSearch(@PathVariable("search") String search) {
-        return movieRepository.findMoviesByTitleContainsIgnoringCase(search);
+    public ResponseEntity<Map<String, Object>> containsSearch(@PathVariable String search, @RequestParam int page, @RequestParam int size) {
+        Pageable searchMovie = PageRequest.of(page, size);
+        Page<Movie> searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase(search, searchMovie);
+        List<Movie> movies = searchPage.getContent();
+        Map<String, Object> response = new HashMap<>();
+        response.put("movies", movies);
+        response.put("currentPage", searchPage.getNumber());
+        response.put("totalItems", searchPage.getTotalElements());
+        response.put("totalPages", searchPage.getTotalPages());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
-//    @PostMapping
-//    Movie createMovie(@RequestBody Movie movie) {
-//        return movieRepository.save(movie);
-//    }
 
 }
