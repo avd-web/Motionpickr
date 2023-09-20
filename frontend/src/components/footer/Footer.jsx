@@ -25,7 +25,7 @@ export default function Footer() {
             </div>
           </section>
           <div className="footer__brand">
-            <img src="images/logo.svg" alt="" />
+            <img src="" alt="" />
             <p className="footer__copyright">
               Copyright 2023 Ateam development
             </p>

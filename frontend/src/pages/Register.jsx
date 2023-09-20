@@ -12,13 +12,12 @@ export default function Register() {
     secondpassword: "",
   });
 
-
   const handleLastname = (e) => {
     setUser({
-      ...user, 
-      lastname : e.target.value,
-    })
-  }
+      ...user,
+      lastname: e.target.value,
+    });
+  };
 
   const handleFirstname = (e) => {
     setUser({
@@ -30,9 +29,9 @@ export default function Register() {
   const handleEmail = (e) => {
     setUser({
       ...user,
-      email : e.target.value,
-    })
-  }
+      email: e.target.value,
+    });
+  };
 
   const handlePassword = (e) => {
     setUser({
@@ -40,7 +39,6 @@ export default function Register() {
       password: e.target.value,
     });
   };
-
 
   const handleSecondPassword = (e) => {
     setUser({
@@ -55,25 +53,23 @@ export default function Register() {
 
     if (user.password === user.secondpassword) {
       console.log("succes");
-      
+
       const postUser = {
         firstname: user.firstname,
-        lastname : user.lastname,
-        email : user.email,
+        lastname: user.lastname,
+        email: user.email,
         password: user.password,
         // role : "USER",
-      }
-      console.log(postUser)
+      };
+      console.log(postUser);
 
       axios.post("http://localhost:8080/api/v1/auth/register", postUser);
-
-
     } else alert("passwords dont match!");
 
     setUser({
       firstname: "",
-      lastname : "",
-      email : "",
+      lastname: "",
+      email: "",
       password: "",
       secondpassword: "",
     });
@@ -90,7 +86,6 @@ export default function Register() {
             </label>
             <input
               type="text"
-              id="usename-input"
               onChange={handleFirstname}
               value={user.firstname}
               required
@@ -102,7 +97,6 @@ export default function Register() {
             </label>
             <input
               type="text"
-              id="usename-input"
               onChange={handleLastname}
               value={user.lastname}
               required
@@ -114,7 +108,6 @@ export default function Register() {
             </label>
             <input
               type="text"
-              id="usename-input"
               onChange={handleEmail}
               value={user.email}
               required
@@ -127,7 +120,6 @@ export default function Register() {
             </label>
             <input
               type="password"
-              id="password-input"
               required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.password}
@@ -142,8 +134,7 @@ export default function Register() {
             <input
               type="password"
               required
-              id="second-password-input"
-              pattern=""
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.secondpassword}
               onChange={handleSecondPassword}
             />
