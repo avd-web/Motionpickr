@@ -9,8 +9,7 @@ export default function WatchList() {
     useEffect(() => {
       const getWatchList = () => {
         list = axios.get(
-          "http://localhost:8080/api/v1//watchlist/" +
-            sessionStorage.getItem("user_email"),AuthHeader
+          "http://localhost:8080/api/v1/watchlist/" ,AuthHeader
         );
       };
       getWatchList();
