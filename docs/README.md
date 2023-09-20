@@ -20,9 +20,8 @@ The main features we want to implement now are the following :
 ## Additional info
 Below we have some additional information in our development process
 
-1. Wireframes
-2. Use-cases
-3. Domain-model
+1. [Wireframes](https://github.com/aegroot/motionpickr/wiki/WireFrame)
+3. [Domain model](https://github.com/aegroot/motionpickr/wiki/Domain%E2%80%90Model)
 
 
 ----
@@ -33,3 +32,5 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+[current year] as
