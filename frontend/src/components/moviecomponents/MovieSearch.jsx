@@ -1,29 +1,29 @@
-import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function MovieSearch({ updateMovies }) {
-  const [search, setSearch] = useState("");
-
-  const fetchSearch = async () => {
-    const fetchSearchResults = await axios.get(
-      `http://localhost:8080/api/v1/movie/search/${search}`
-    );
-
-    updateMovies(fetchSearchResults.data);
-  };
+export default function MovieSearch({ search, setSearch, movieSearch, setPage }) {
+  const [currentSearch, setCurrentSearch] = useState("")
 
   const handleSearch = (e) => {
-    setSearch(e.target.value);
+      setSearch(e.target.value);
+      console.log(search)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchSearch();
+
+    if (search !== e.target.value) {
+      setPage(0)
+    } 
+
+    console.log(search)
+    movieSearch()
   };
+
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={search} onChange={handleSearch} />
+        <input type="text" onChange={handleSearch} value={search} />
         <input type="submit" title="search" />
       </form>
     </div>

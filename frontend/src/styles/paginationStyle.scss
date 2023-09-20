@@ -1,0 +1,54 @@
+@import "mainSheet";
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  outline-style: outset;
+  margin: 2vh;
+}
+
+@mixin buttondisplay() {
+  height: 2px;
+  width: 2px;
+  border: none;
+  background-color: black;
+}
+
+.pagination-item {
+  margin-right: 2vh;
+  margin-left: 1vh;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  color: darkblue;
+  &:hover {
+    background-color: black;
+    color : whitesmoke;
+  }
+}
+
+.pagination-button {
+    margin-right: 0.5vh;
+    margin-left: 0.5vh;
+    width: 25px;
+    height: 25px;
+    background: white;
+    font-size: 2vh;
+    border-radius: 50%;
+    text-align: center;
+    border: none;
+    &:hover {
+        background-color: black;
+        color: whitesmoke;
+    }
+}
+
+#current-page{
+  text-decoration-line: underline;
+}

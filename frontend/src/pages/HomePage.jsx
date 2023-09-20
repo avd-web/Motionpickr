@@ -10,7 +10,7 @@ export default function HomePage() {
     const movieFetch = await axios.get(
       `http://localhost:8080/api/v1/movie?page=0&size=10`
     );
-    setMovies(movieFetch.data.content);
+    setMovies(movieFetch.data.movies);
   };
 
   useEffect(() => {
