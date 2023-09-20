@@ -1,17 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import "./letter.scss";
 
-export default function AlphabetBar({updateMovies}) {
+import "../../styles/letter.scss";
 
+export default function AlphabetBar({moviePerletter, setCurrentLetter, setPage, currentletter}) {
 
-  const fetchMoviePerLetter = async (e) => {
-    console.log(e.target.value + "  pressed");
-    const responseMovies = await axios.get(
-      `http://localhost:8080/api/v1/movie/letter/${e.target.value}`
-    );
-    updateMovies(responseMovies.data)
-  };
+  const handleClick = (e) => {
+    if(e.target.value !== currentletter) {
+      setPage(0);
+    }
+    setCurrentLetter(e.target.value)
+    moviePerletter(e.target.value)
+  }
 
   const renderAlphabet = () => {
     const letters = [];
@@ -26,9 +24,6 @@ export default function AlphabetBar({updateMovies}) {
 
   const alphabet = renderAlphabet();
 
-  useEffect(() => {
-    console.log(alphabet);
-  }, []);
 
   return (
     <div>
@@ -38,7 +33,7 @@ export default function AlphabetBar({updateMovies}) {
             <input
               type="button"
               value={letter.sign}
-              onClick={fetchMoviePerLetter}
+              onClick={handleClick}
             />
           </div>
         ))}
