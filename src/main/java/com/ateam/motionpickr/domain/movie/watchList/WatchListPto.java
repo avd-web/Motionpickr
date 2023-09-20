@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WatchListPostDto {
+public class WatchListPto {
     private long movieId;
 }

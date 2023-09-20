@@ -1,6 +1,7 @@
 package com.ateam.motionpickr.security.user;
 
 import com.ateam.motionpickr.domain.movie.Movie;
+import com.ateam.motionpickr.domain.movie.recommended.Recommendation;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,10 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Data
@@ -44,6 +42,10 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private Set<Movie> watchlist=new HashSet<>();
+
+
+    private List<Recommendation> recommended=new ArrayList<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,7 +7,6 @@ import com.ateam.motionpickr.security.user.User;
 import com.ateam.motionpickr.security.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +33,7 @@ public class WatchListController {
         return user.getWatchlist();
     }
     @DeleteMapping
-    public void deleteFromWatchList(@RequestBody WatchListPostDto dto,@AuthenticationPrincipal UserDetails details){
+    public void deleteFromWatchList(@RequestBody WatchListPto dto, @AuthenticationPrincipal UserDetails details){
         User user=userRepository.findByEmail(details.getUsername()).orElseThrow();
         Set<Movie>movies=user.getWatchlist();
         Movie movie=movieRepository.findById(dto.getMovieId()).orElseThrow();
@@ -45,7 +44,7 @@ public class WatchListController {
     }
 
     @PostMapping
-    public void addMovieToWatchList(@RequestBody WatchListPostDto dto,@AuthenticationPrincipal UserDetails details){
+    public void addMovieToWatchList(@RequestBody WatchListPto dto, @AuthenticationPrincipal UserDetails details){
         User user=userRepository.findByEmail(details.getUsername()).orElseThrow();
         Set<Movie>movies=user.getWatchlist();
         Movie movie=movieRepository.findById(dto.getMovieId()).orElseThrow();
