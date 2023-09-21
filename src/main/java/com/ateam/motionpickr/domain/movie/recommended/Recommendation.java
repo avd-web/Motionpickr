@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Setter
 @Getter
@@ -66,5 +68,18 @@ public class Recommendation {
 
     public void setUserTo(User userTo) {
         this.userTo = userTo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recommendation that = (Recommendation) o;
+        return   userTo.equals(that.userTo) && userFrom.equals(that.userFrom) && movie.equals(that.movie);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userTo, userFrom, movie);
     }
 }
