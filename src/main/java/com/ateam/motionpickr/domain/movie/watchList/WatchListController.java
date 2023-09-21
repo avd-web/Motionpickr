@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/watchlist")
 public class WatchListController {
 
@@ -25,11 +26,11 @@ public class WatchListController {
 
     @GetMapping
     public Set<Movie>getByUser(@AuthenticationPrincipal UserDetails details){
-        System.out.println(details.getUsername());
 
         User user=userRepository.findByEmail(details.getUsername()).orElseThrow();
 
         user.getWatchlist().add(movieRepository.findById(1L).orElseThrow());
+
         return user.getWatchlist();
     }
     @DeleteMapping

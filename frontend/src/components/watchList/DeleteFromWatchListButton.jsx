@@ -6,7 +6,7 @@ export default function DeleteFromWatchListButton({ movie_id }) {
     let requestBody = { movieId: movie_id };
 
     await axios.delete(
-      "http://localhost:8080/api/v1/watchlist/",
+      "http://localhost:8080/api/v1/watchlist",
       requestBody,
       AuthHeader
     );

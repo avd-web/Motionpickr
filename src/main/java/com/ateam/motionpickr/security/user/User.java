@@ -44,6 +44,7 @@ public class User implements UserDetails {
     private Set<Movie> watchlist=new HashSet<>();
 
 
+    @OneToMany
     private List<Recommendation> recommended=new ArrayList<>();
 
 

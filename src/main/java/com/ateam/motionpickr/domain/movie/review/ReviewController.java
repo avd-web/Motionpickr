@@ -2,7 +2,6 @@ package com.ateam.motionpickr.domain.movie.review;
 
 
 import com.ateam.motionpickr.domain.movie.MovieRepository;
-import com.ateam.motionpickr.domain.movie.ReviewDto;
 import com.ateam.motionpickr.security.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +31,7 @@ public class ReviewController {
         dataReview.setComment(reviewDto.getReview());
         dataReview.setMovie(movieRepository.findById(reviewDto.getMovieId()).orElseThrow());
         dataReview.setUser(userRepository.findByEmail(reviewDto.getUserDto().getEmail()).orElseThrow());
+        dataReview.setScore(reviewDto.getScore());
 
         reviewRepository.save(dataReview);
     }

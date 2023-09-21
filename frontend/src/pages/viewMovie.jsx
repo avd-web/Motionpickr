@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthHeader } from "../auth/authorization";
 import AddReview from "../components/reviews/addReview";
 import ViewReviews from "../components/reviews/viewReviews";
+import AddToWatchListButton from "../components/watchList/addToWatchListButton";
 
 export default function ViewMovie() {
   const { id } = useParams();
@@ -28,6 +29,8 @@ export default function ViewMovie() {
       <span></span>
        <AddReview id={id}/>
       <ViewReviews movie_id={id}/>
+      <AddToWatchListButton movie_id={id}/>
+
      
     </div>
   );

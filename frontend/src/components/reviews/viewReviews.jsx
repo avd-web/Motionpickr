@@ -24,5 +24,5 @@ export default function ViewReviews({ movie_id }) {
  
   }, []);
 
-  return <div className="reviews-container">{reviews.map((item) => ( <Review  review={item.review} firstName={item.userDto.firstname} email={item.userDto.email}/> ))}</div>;
+  return <div className="reviews-container">{reviews.map((item) => ( <Review  review={item.review} firstName={item.userDto.firstname} email={item.userDto.email} score={item.score}/> ))}</div>;
 }

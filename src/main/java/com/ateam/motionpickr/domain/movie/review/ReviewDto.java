@@ -1,7 +1,6 @@
-package com.ateam.motionpickr.domain.movie;
+package com.ateam.motionpickr.domain.movie.review;
 
 
-import com.ateam.motionpickr.domain.movie.review.Review;
 import com.ateam.motionpickr.security.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,10 +17,14 @@ public class ReviewDto {
     UserDto userDto;
     String review;
 
+    double score;
+
+
+
     public static ReviewDto toDto(Review review){
         long movId=review.getMovie().getId();
         UserDto userDto1=UserDto.toDto(review.getUser());
-        return new ReviewDto(movId,userDto1,review.getComment());
+        return new ReviewDto(movId,userDto1,review.getComment(),review.getScore());
     }
 
     @Override

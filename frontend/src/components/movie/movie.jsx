@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function movie({ title, genres }) {
+export default function Movie({ title, genres }) {
   return (
     <div>
       <h2>{title}</h2>

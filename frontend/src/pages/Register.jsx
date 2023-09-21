@@ -134,7 +134,7 @@ export default function Register() {
             <input
               type="password"
               required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              pattern="[(?=.*\d)(?=.*[a-z])(?=.*[A-Z])].{8,}"
               value={user.secondpassword}
               onChange={handleSecondPassword}
             />

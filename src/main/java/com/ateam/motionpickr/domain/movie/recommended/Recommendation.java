@@ -38,37 +38,6 @@ public class Recommendation {
         this.movie = movie;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
-    public User getUserFrom() {
-        return userFrom;
-    }
-
-    public void setUserFrom(User userFrom) {
-        this.userFrom = userFrom;
-    }
-
-    public User getUserTo() {
-        return userTo;
-    }
-
-    public void setUserTo(User userTo) {
-        this.userTo = userTo;
-    }
 
     @Override
     public boolean equals(Object o) {
