@@ -24,6 +24,8 @@ public class Review {
     @JoinColumn(name = "movie_id")
     Movie movie;
 
+    double score;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;

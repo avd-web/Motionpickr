@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import ViewWatchList from "../components/watchList/viewWatchList";
 
 export default function WatchList() {
   const [watchList, setwatchList] = useState([]);
@@ -7,6 +8,6 @@ export default function WatchList() {
     //const data=axios.get("");
   };
 
-  useEffect(() => fetchWatchList());
-  return <div>watchList</div>;
+  //useEffect(() => fetchWatchList());
+  return <div><ViewWatchList/></div>;
 }
