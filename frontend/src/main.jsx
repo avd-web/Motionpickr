@@ -8,7 +8,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Friends from "./pages/friends";
 import ViewMovie from "./pages/viewMovie";
-import Recommended from "./pages/recommended";
+import Recommended from "./pages/userRecommended";
 import WatchList from "./pages/watchList";
 import GenreInfo from "./pages/GenreInfo";
 import AccountPage from "./pages/AccountPage";

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/movieSheet.css";
+import { Link } from "react-router-dom";
 
 export default function MovieList({ movie }) {
   return (
@@ -9,7 +10,7 @@ export default function MovieList({ movie }) {
           <p className="text-items item1"> {movie.title} </p>
           <p className="text-items item2"> description </p>
           <p className="text-items item3"> score </p>
-          <p className="text-items button"> add </p>
+         <Link to={"/movie/"+movie.id}> <button className="text-items button"> view </button></Link>
         </div>
       </div>
     </div>
