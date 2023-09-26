@@ -8,7 +8,7 @@ export default function ViewWatchList() {
     const [watchList, setwatchList] = useState([]);
   
     useEffect(() => {
-      const getWatchList = async() => {
+      const getWatchList = async () => {
         let list = await axios.get(
           "http://localhost:8080/api/v1/watchlist",AuthHeader()
         );

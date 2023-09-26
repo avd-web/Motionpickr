@@ -25,9 +25,12 @@ public class MovieController {
     GenreRepository genreRepository;
 
     @GetMapping("{id}")
-    @ResponseBody
     Movie getMovieById(@PathVariable("id") long id) {
-        return movieRepository.findById(id).orElse(null);
+        System.out.println(id);
+
+
+
+        return movieRepository.findById(id).orElseThrow();
     }
 
     @GetMapping("list")

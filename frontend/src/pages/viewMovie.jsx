@@ -5,32 +5,37 @@ import { AuthHeader } from "../auth/authorization";
 import AddReview from "../components/reviews/addReview";
 import ViewReviews from "../components/reviews/viewReviews";
 import AddToWatchListButton from "../components/watchList/addToWatchListButton";
+import Movie from "../components/movie/movie";
 
 export default function ViewMovie() {
   const { id } = useParams();
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      const data = await axios.get(
-        "http://localhost:8080/api/v1/movie/" + id,
-        AuthHeader()
+    let getWatchList = async () => {
+      let data = await axios.get(
+        "http://localhost:8080/api/v1/movie/"+id,AuthHeader()
       );
+
       setMovie(data.data);
+   
+
     };
-    fetchMovie();
-    console.log("movie: "+movie);
-  }, []);
+    getWatchList();
+
+  },[]);
+
   return (
     <div>
-      <h2>
-        {movie===null?null: movie.title}
-      </h2>
-      <span></span>
+      {console.log(movie)}
+      <h2>{movie.title}</h2>
+      <p>{movie.id}</p>
+   
+  
+   
        <AddReview id={id}/>
       <ViewReviews movie_id={id}/>
       <AddToWatchListButton movie_id={id}/>
-
      
     </div>
   );

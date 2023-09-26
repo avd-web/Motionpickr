@@ -73,6 +73,10 @@ export default function Movie() {
         movieSearch={movieSearch}
         setPage={setPage}
       />
+      <table>
+        <thead><tr><th>title</th><th>description</th><th>score</th><th>nav</th></tr></thead>
+        <tbody></tbody>
+      </table>
       {movies.map((movie) => (
         <MovieList movie={movie} key={movie.id} />
       ))}
