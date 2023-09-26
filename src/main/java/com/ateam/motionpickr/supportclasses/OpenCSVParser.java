@@ -1,9 +1,14 @@
 package com.ateam.motionpickr.supportclasses;
 
+import com.ateam.motionpickr.domain.cast.actor.Actor;
+import com.ateam.motionpickr.domain.cast.actor.ActorRepository;
+import com.ateam.motionpickr.domain.cast.movieCast.Cast;
+import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
+import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
 import com.ateam.motionpickr.domain.movie.Movie;
-import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.movie.MovieRepository;
+import com.ateam.motionpickr.supportclasses.listParser.ParseCreditValues;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +19,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+
 @Component
 public class OpenCSVParser implements CommandLineRunner {
 
@@ -23,16 +29,73 @@ public class OpenCSVParser implements CommandLineRunner {
     @Autowired
     private GenreRepository genreRepository;
 
+    @Autowired
+    private ActorRepository actorRepository;
+
+    @Autowired
+    private CastRepository castRepository;
+
     @Value("${motionpickr.dir}")
     private String filename;
+
+    @Value("${motionpickrCast.dir}")
+    private String filenameCast;
+
+    private final Set<String> knownActors = new HashSet<>();
     private final Set<String> knownGenres = new HashSet<>();
+
+    private List<Integer> movieMetaId = new ArrayList<>();
+    List<Integer> duplicates = new ArrayList<>();
+
+    public void getActors(String[] line) {
+        String csvCreditsActors = line[0];
+        int id = Integer.valueOf(line[2]);
+        List<String> names = ParseCreditValues.getFieldName(csvCreditsActors, "'name': ");
+        List<String> characters = ParseCreditValues.getFieldName(csvCreditsActors, "'character': ");
+
+
+        for (String actorName : names) {
+            if (!knownActors.contains(actorName)) {
+                knownActors.add(actorName);
+                if (actorRepository.findByName(actorName).isEmpty()) {
+                    actorRepository.save(new Actor(actorName));
+                }
+            }
+        }
+        System.out.println(id);
+        var movie = movieRepository.findByDataId(id).get();
+
+        for (String name : names) {
+            var actor = actorRepository.findByName(name);
+
+            castRepository.save(new Cast(actor.get(0), movie, characters.get(names.indexOf(name))));
+        }
+    }
+
+
+    public void seedActorfromCsv() throws IOException {
+        try (CSVReader reader = new CSVReader(new FileReader(filenameCast))) {
+            List<String[]> csv = reader.readAll().stream().skip(1).toList();
+            for (String[] string : csv) {
+                getActors(string);
+            }
+        }
+    }
+
 
     private Movie createMovieFromArray(String[] line) {
         String genres = line[3];
+        int dataId = Integer.valueOf(line[5]);
+
+
+        movieMetaId.add(dataId);
+
+
         String[] genresArray = genres.split("'");
         List<String> genreNames = Arrays.stream(genresArray).filter(term -> Character.isUpperCase(term.charAt(0))).toList();
         System.out.println(genreNames);
         Set<Genre> setOfGenres = new HashSet<>();
+
         for (String t : genreNames) {
             if (!knownGenres.contains(t)) {
                 knownGenres.add(t);
@@ -48,14 +111,21 @@ public class OpenCSVParser implements CommandLineRunner {
             System.out.println(Arrays.toString(line));
             System.exit(-1);
         }
-        return new Movie(line[20], setOfGenres);
+
+        return new Movie(line[20], setOfGenres, dataId);
     }
+
 
     @Override
     public void run(String... args) throws Exception {
         if (movieRepository.count() == 0) {
             seeder();
         }
+
+        if (actorRepository.count() == 0) {
+            seedActorfromCsv();
+        }
+
     }
 
     private void seeder() throws IOException {

@@ -1,5 +1,7 @@
 package com.ateam.motionpickr.domain.movie;
 
+import com.ateam.motionpickr.domain.cast.movieCast.Cast;
+import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,8 @@ public class MovieController {
 
     @Autowired
     GenreRepository genreRepository;
+    @Autowired
+    CastRepository castRepository;
 
     @GetMapping("{id}")
     @ResponseBody
@@ -69,8 +73,14 @@ public class MovieController {
         return movieRepository.findByGenres(genre);
     }
 
+    @GetMapping("/cast/{id}")
+    public List<Cast> findByMovieId(@PathVariable("id") Long id){
+        return castRepository.findByMovieId(id);
+    }
+
 
     @GetMapping("search/{search}")
+
     public ResponseEntity<Map<String, Object>> containsSearch(@PathVariable String search, @RequestParam int page, @RequestParam int size) {
         Pageable searchMovie = PageRequest.of(page, size);
         Page<Movie> searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase(search, searchMovie);

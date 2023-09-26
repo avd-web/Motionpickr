@@ -1,16 +1,19 @@
 package com.ateam.motionpickr.domain.movie;
 
 import com.ateam.motionpickr.domain.genre.Genre;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 public class Movie {
     @Id
@@ -28,26 +31,16 @@ public class Movie {
     )
     private Set<Genre> genres = new HashSet<>();
 
-    public Movie(String title, Set<Genre> genres) {
+    @JsonIgnore
+    private int dataId;
+
+
+    public Movie(String title, Set<Genre> genres, int dataId) {
         this.genres = genres;
         this.title = title;
+        this.dataId = dataId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Set<Genre> getGenres() {
-        return genres;
-    }
 
     @Override
     public String toString() {
