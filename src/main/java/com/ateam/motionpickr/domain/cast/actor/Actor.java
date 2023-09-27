@@ -1,7 +1,9 @@
 package com.ateam.motionpickr.domain.cast.actor;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,11 +16,11 @@ import lombok.Setter;
 @Setter
 public class Actor {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue
     private Long id;
-
     private  String name;
 
-
+    public Actor(String name) {
+        this.name = name;
+    }
 }
