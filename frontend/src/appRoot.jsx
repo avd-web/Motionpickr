@@ -14,6 +14,9 @@ export default function AppRoot() {
 add rest of components to routes
 make api calls use useContext with dashboardContext
 
+update content of the Main component to
+   include this component in place of the browser router
+
 done 
 
 :)
