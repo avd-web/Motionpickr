@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/registerSheet.css";
 import axios from "axios";
 
 export default function Register() {
@@ -76,13 +75,13 @@ export default function Register() {
   };
 
   return (
-    <div className="login-container">
-      <h1 id="login-header"> Register </h1>
-      <div className="login-container2">
+    <div>
+      <h1> Register </h1>
+      <div>
         <form onSubmit={handleSubmit}>
-          <div className="login-input name">
-            <label htmlFor="username-input" value={user.name} id="label-name">
-              Your name:
+          <div>
+            <label htmlFor="username-input" value={user.name}>
+              Firstname:
             </label>
             <input
               type="text"
@@ -91,9 +90,9 @@ export default function Register() {
               required
             />
           </div>
-          <div className="login-input name">
-            <label htmlFor="username-input" value={user.name} id="label-name">
-              Your name:
+          <div>
+            <label htmlFor="username-input" value={user.name}>
+              Lastname:
             </label>
             <input
               type="text"
@@ -102,9 +101,9 @@ export default function Register() {
               required
             />
           </div>
-          <div className="login-input name">
-            <label htmlFor="username-input" value={user.name} id="label-name">
-              Your e-mail:
+          <div>
+            <label htmlFor="username-input" value={user.name}>
+              E-mail:
             </label>
             <input
               type="text"
@@ -113,30 +112,24 @@ export default function Register() {
               required
             />
           </div>
-          <div className="login-input password">
-            <label htmlFor="password-input" id="label-password">
-              {" "}
-              Your Password:{" "}
-            </label>
+          <div>
+            <label htmlFor="password-input"> Password: </label>
             <input
               type="password"
-              required
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.password}
               onChange={handlePassword}
+              required
             />
           </div>
-          <div className="login-input passwordcheck">
-            <label htmlFor="second-password-input" id="label-check">
-              {" "}
-              Re-enter password:{" "}
-            </label>
+          <div>
+            <label htmlFor="second-password-input"> Re-enter password: </label>
             <input
               type="password"
-              required
-              pattern="[(?=.*\d)(?=.*[a-z])(?=.*[A-Z])].{8,}"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               value={user.secondpassword}
               onChange={handleSecondPassword}
+              required
             />
             <input type="submit" />
           </div>
