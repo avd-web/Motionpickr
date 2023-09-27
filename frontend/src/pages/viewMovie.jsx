@@ -14,29 +14,25 @@ export default function ViewMovie() {
   useEffect(() => {
     let getWatchList = async () => {
       let data = await axios.get(
-        "http://localhost:8080/api/v1/movie/"+id,AuthHeader()
+        "http://localhost:8080/api/v1/movie/" + id,
+        AuthHeader()
       );
 
       setMovie(data.data);
-   
-
     };
     getWatchList();
+  }, []);
 
-  },[]);
+  if(!movie){return <>loading...</>}
 
   return (
     <div>
-      {console.log(movie)}
-      <h2>{movie.title}</h2>
-      <p>{movie.id}</p>
-   
-  
-   
-       <AddReview id={id}/>
-      <ViewReviews movie_id={id}/>
-      <AddToWatchListButton movie_id={id}/>
-     
+      { console.log(movie.genres)}
+      <Movie title={movie.title} genres={movie.genres}/>
+
+      <AddReview id={id} />
+      <ViewReviews movie_id={id} />
+      <AddToWatchListButton movie_id={id} />
     </div>
   );
 }
