@@ -29,7 +29,6 @@ public class WatchListController {
 
         User user=userRepository.findByEmail(details.getUsername()).orElseThrow();
 
-        user.getWatchlist().add(movieRepository.findById(1L).orElseThrow());
 
         return user.getWatchlist();
     }

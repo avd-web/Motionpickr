@@ -3,6 +3,7 @@ import ViewWatchList from "../components/watchList/viewWatchList";
 import { useContext } from "react";
 import { DashboardContext } from "./Context";
 import Home from "./Home";
+import MovieList from "../components/moviecomponents/MovieItem";
 
 export default function WatchList() {
   const access_token = useContext(DashboardContext);

@@ -6,16 +6,21 @@ import AddReview from "../components/reviews/addReview";
 import ViewReviews from "../components/reviews/viewReviews";
 import AddToWatchListButton from "../components/watchList/addToWatchListButton";
 import Movie from "../components/movie/movie";
+import { useContext } from "react";
+import { DashboardContext } from "./Context";
 
 export default function ViewMovie() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  const access_token = useContext(DashboardContext);
 
   useEffect(() => {
+
+    console.log()
     let getWatchList = async () => {
       let data = await axios.get(
         "http://localhost:8080/api/v1/movie/" + id,
-        AuthHeader()
+        AuthHeader(access_token)
       );
 
       setMovie(data.data);
@@ -27,7 +32,7 @@ export default function ViewMovie() {
 
   return (
     <div>
-      { console.log(movie.genres)}
+     {console.log(access_token)}
       <Movie title={movie.title} genres={movie.genres}/>
 
       <AddReview id={id} />

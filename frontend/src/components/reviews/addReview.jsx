@@ -5,6 +5,7 @@ import { AuthHeader } from "../../auth/authorization";
 export default function AddReview({ id }) {
   const [review, setReview] = useState("");
   const [sscore, setScore] = useState(0);
+  const access_token = useContext(DashboardContext);
 
   const reviewBody = () => {
     return {

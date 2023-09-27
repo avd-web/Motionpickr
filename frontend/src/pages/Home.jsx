@@ -14,8 +14,8 @@ export default function Home() {
     // console.log("useeffect activated");
     if (sessionStorage.getItem("key")) {
       setAuthResp(sessionStorage.getItem("key"));
-      console.log("key set:");
-      console.table(sessionStorage.getItem("key"));
+      //console.log("key set:");
+      //console.table(sessionStorage.getItem("key"));
     }
   }, []);
 
@@ -92,6 +92,7 @@ export default function Home() {
     <>
       <DashboardContext.Provider value={authResp}>
         <UserPage />
+   
       </DashboardContext.Provider>
       <p>You are logged in</p>
       <button onClick={handleLogout}>Logout</button>
