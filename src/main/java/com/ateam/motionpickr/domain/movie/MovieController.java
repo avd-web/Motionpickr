@@ -1,10 +1,13 @@
 package com.ateam.motionpickr.domain.movie;
 
+import com.ateam.motionpickr.domain.cast.movieCast.Cast;
+import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +26,8 @@ public class MovieController {
 
     @Autowired
     GenreRepository genreRepository;
+    @Autowired
+    CastRepository castRepository;
 
     @GetMapping("{id}")
     Movie getMovieById(@PathVariable("id") long id) {
@@ -42,7 +47,7 @@ public class MovieController {
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> findAll(@RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findAll(searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
@@ -55,7 +60,7 @@ public class MovieController {
 
     @GetMapping("letter/{letter}")
     public ResponseEntity<Map<String, Object>> findByLetter(@PathVariable("letter") String letter, @RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
@@ -72,10 +77,16 @@ public class MovieController {
         return movieRepository.findByGenres(genre);
     }
 
+    @GetMapping("/cast/{id}")
+    public List<Cast> findByMovieId(@PathVariable("id") Long id){
+        return castRepository.findByMovieId(id);
+    }
+
 
     @GetMapping("search/{search}")
+
     public ResponseEntity<Map<String, Object>> containsSearch(@PathVariable String search, @RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase(search, searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
