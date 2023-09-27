@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class MovieController {
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> findAll(@RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findAll(searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
@@ -56,7 +57,7 @@ public class MovieController {
 
     @GetMapping("letter/{letter}")
     public ResponseEntity<Map<String, Object>> findByLetter(@PathVariable("letter") String letter, @RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
@@ -82,7 +83,7 @@ public class MovieController {
     @GetMapping("search/{search}")
 
     public ResponseEntity<Map<String, Object>> containsSearch(@PathVariable String search, @RequestParam int page, @RequestParam int size) {
-        Pageable searchMovie = PageRequest.of(page, size);
+        Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
         Page<Movie> searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase(search, searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();

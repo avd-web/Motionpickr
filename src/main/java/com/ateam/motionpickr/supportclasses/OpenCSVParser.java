@@ -44,8 +44,6 @@ public class OpenCSVParser implements CommandLineRunner {
     private final Set<String> knownActors = new HashSet<>();
     private final Set<String> knownGenres = new HashSet<>();
 
-    private List<Integer> movieMetaId = new ArrayList<>();
-    List<Integer> duplicates = new ArrayList<>();
 
     public void getActors(String[] line) {
         String csvCreditsActors = line[0];
@@ -87,8 +85,6 @@ public class OpenCSVParser implements CommandLineRunner {
         String genres = line[3];
         int dataId = Integer.valueOf(line[5]);
 
-
-        movieMetaId.add(dataId);
 
 
         String[] genresArray = genres.split("'");
