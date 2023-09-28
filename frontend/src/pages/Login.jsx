@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
 import axios from "axios";
-import { AuthHeader } from "../auth/authorization";
 
-export default function Login() {
+export default function Login({persistTokenEvent}) {
+
+
   const [show, setShow] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -20,17 +21,7 @@ export default function Login() {
     );
     console.log(authResp.data);
 
-    sessionStorage.clear();
-    sessionStorage.setItem("access_token", authResp.data.access_token);
-    sessionStorage.setItem("refres_token", authResp.data.refresh_token);
-    sessionStorage.setItem("user_email",email);
-
-    console.log(AuthHeader());
-    let demo = await axios.get(
-      "http://localhost:8080/api/v1/demo-controller",
-      AuthHeader()
-    );
-    console.log(demo);
+    persistTokenEvent(authResp.data);
     emptyForm();
   };
   const emptyForm = () => {
@@ -43,7 +34,7 @@ export default function Login() {
     <div className="register-container">
       <h1 className="register-header"> Sign in </h1>
       <div className="label-container">
-        <form className="register-labels" onSubmit={handleSubmit}>
+        <form className="register-labels" onSubmit={()=>{handleSubmit()}}>
           <div>
             <label htmlFor="email" id="email-label">
               Enter e-mail:

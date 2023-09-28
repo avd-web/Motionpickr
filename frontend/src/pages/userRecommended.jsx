@@ -7,6 +7,7 @@ import { AuthHeader } from "../auth/authorization";
 import MovieList from "../components/moviecomponents/MovieItem";
 
 export default function Recommended() {
+
   const access_token = useContext(DashboardContext);
   const [recommended,setRecommended]=useState([])
 

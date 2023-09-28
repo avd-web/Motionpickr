@@ -1,17 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import HomePage from "./pages/HomePage";
-import Movie from "./pages/Movie";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import Friends from "./pages/friends";
-import ViewMovie from "./pages/viewMovie";
-import Recommended from "./pages/userRecommended";
-import WatchList from "./pages/watchList";
-import GenreInfo from "./pages/GenreInfo";
-import Home from "./pages/Home";
+import AppRoot from "./appRoot";
 
 // import Register from "./pages/Register";
 // import Login from "./pages/Login";
@@ -19,25 +8,17 @@ import Genre from "./pages/Genre";
 import "./styles/MAINstyles.css";
 import "./styles/normalize.css";
 
+/* todo
+remove the entire browser router tree
+replace it with the AppRoot component
+
+profit
+
+
+*/
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/movie" element={<Movie />} />
-        <Route path="/movie/:id" element={<ViewMovie />} />
-        <Route path="/friends" element={<Friends />} />
-        <Route path="/recommended" element={<Recommended />} />
-        <Route path="/watchlist" element={<WatchList />} />
-        {/* <Route path="/account" element={<AccountPage />} /> */}
-        {/* <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> */}
-        <Route path="/genre/:genreid" element={<GenreInfo />} />
-        <Route path="/genre" element={<Genre />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AppRoot/>
   </React.StrictMode>
 );
