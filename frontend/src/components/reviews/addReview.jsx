@@ -20,13 +20,19 @@ export default function AddReview({ id }) {
   };
 
   const handleSubmit = (ev) => {
+    
     ev.preventDefault();
-    console.log(id);
+    console.log("sessionStorage")
+    console.table(sessionStorage.getItem("key"));
     console.log(reviewBody());
     axios.post(
       "http://localhost:8080/api/v1/review/add",
       reviewBody(),
-      AuthHeader()
+      {
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("key"),
+        },
+      }
     );
   };
 
