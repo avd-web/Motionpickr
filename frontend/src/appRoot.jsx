@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { DashboardContext } from "./pages/Context";
+import { DashboardContext,SetTokenFunctionContext } from "./pages/Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Footer from "./components/footer/Footer";
@@ -26,11 +26,13 @@ export default function AppRoot() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route index element={<HomePage />} />
+            <Route index element={<HomePage />} />          
             <Route
               path="/home"
               element={
+                <SetTokenFunctionContext.Provider value={()=>{console.log("test")}}>
                 <Home setTokenEvent={setToken} removeTokenEvent={removeToken} />
+              </SetTokenFunctionContext.Provider>
               }
             />
             <Route path="/movie" element={<Movie />} />

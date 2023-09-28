@@ -56,7 +56,6 @@ export default function Movie() {
       default:
         fetchFilter(movieStandard());
     }
-
   }, [page, currentLetter]);
 
   return (

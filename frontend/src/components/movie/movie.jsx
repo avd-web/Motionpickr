@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext } from "react";
+import { DashboardContext } from "../../pages/Context";
 
 export default function Movie({ title, genres }) {
   const access_token = useContext(DashboardContext);
