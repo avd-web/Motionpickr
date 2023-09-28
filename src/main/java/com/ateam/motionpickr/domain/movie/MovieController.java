@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -94,5 +95,17 @@ public class MovieController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("popularity")
+    public ResponseEntity<Map<String, Object>> findTopMovies(@RequestParam int page, @RequestParam int size) {
+        Pageable popularMovies = PageRequest.of(page, size);
+        Page<Movie> popularPage = movieRepository.findAllByOrderByPopularityDesc(popularMovies);
+        List<Movie> movies = popularPage.getContent();
+        Map<String, Object> response = new HashMap<>();
+        response.put("movies", movies);
+        response.put("currentPage", popularPage.getNumber());
+        response.put("totalItems", popularPage.getTotalElements());
+        response.put("totalPages", popularPage.getTotalPages());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 }
