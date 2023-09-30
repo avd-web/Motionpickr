@@ -16,7 +16,6 @@ export default function ViewMovie() {
 
   useEffect(() => {
 
-    console.log()
     let getWatchList = async () => {
       let data = await axios.get(
         "http://localhost:8080/api/v1/movie/" + id,

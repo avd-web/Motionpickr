@@ -19,7 +19,7 @@ export default function Login({persistTokenEvent}) {
       "http://localhost:8080/api/v1/auth/authenticate",
       authBody
     );
-    console.log(authResp.data);
+    console.log(persistTokenEvent);
 
     persistTokenEvent(authResp.data);
     emptyForm();

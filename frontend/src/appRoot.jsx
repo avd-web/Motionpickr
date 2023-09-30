@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { DashboardContext,SetTokenFunctionContext } from "./pages/Context";
+import { DashboardContext, SetTokenFunctionContext } from "./pages/Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Footer from "./components/footer/Footer";
@@ -14,7 +14,6 @@ import Genre from "./pages/Genre";
 import Home from "./pages/Home";
 import HomePage from "./pages/HomePage";
 export default function AppRoot() {
-
   const [token, setToken] = useState(null);
   const removeToken = () => {
     setToken(null);
@@ -26,13 +25,11 @@ export default function AppRoot() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route index element={<HomePage />} />          
+            <Route index element={<HomePage />} />
             <Route
               path="/home"
               element={
-                <SetTokenFunctionContext.Provider value={()=>{console.log("test")}}>
                 <Home setTokenEvent={setToken} removeTokenEvent={removeToken} />
-              </SetTokenFunctionContext.Provider>
               }
             />
             <Route path="/movie" element={<Movie />} />

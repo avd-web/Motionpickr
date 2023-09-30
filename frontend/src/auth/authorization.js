@@ -1,4 +1,5 @@
-export const AuthHeader = (token) => { return  {headers: {
-          Authorization: "Bearer " + token}
+export const AuthHeader = () =>   ({
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("key"),
         }
-      };
+      })

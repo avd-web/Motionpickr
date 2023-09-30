@@ -1,9 +1,13 @@
 import React from "react";
 import { useContext } from "react";
 import { DashboardContext } from "../../pages/Context";
+import { AuthHeader } from "../../auth/authorization";
 
 export default function Movie({ title, genres }) {
-  const access_token = useContext(DashboardContext);
+  const access_token = AuthHeader();
+
+  if(!title||!genres){return <div>loading</div>}
+
   return (
     <div>
       {access_token}
