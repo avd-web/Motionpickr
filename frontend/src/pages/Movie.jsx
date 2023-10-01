@@ -4,7 +4,6 @@ import AlphabetBar from "../components/moviecomponents/AlphabetBar";
 import MovieSearch from "../components/moviecomponents/MovieSearch";
 import Pagination from "../components/generalcomponent/Pagination";
 import axios from "axios";
-import { defer } from "react-router-dom";
 
 export default function Movie() {
   const [movies, setMovies] = useState([]);
@@ -56,7 +55,6 @@ export default function Movie() {
       default:
         fetchFilter(movieStandard());
     }
-
   }, [page, currentLetter]);
 
   return (
@@ -74,7 +72,14 @@ export default function Movie() {
         setPage={setPage}
       />
       <table>
-        <thead><tr><th>title</th><th>description</th><th>score</th><th>nav</th></tr></thead>
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>score</th>
+            <th>nav</th>
+          </tr>
+        </thead>
         <tbody></tbody>
       </table>
       {movies.map((movie) => (

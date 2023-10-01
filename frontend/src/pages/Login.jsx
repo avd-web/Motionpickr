@@ -4,9 +4,7 @@ import axios from "axios";
 import Register from "./Register";
 
 export default function Login() {
-  // const [show, setShow] = useState(true);
   const [auth, setAuth] = useState(sessionStorage.getItem("access_token"));
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,37 +19,16 @@ export default function Login() {
     );
     console.log(authResp.data);
 
-    // sessionStorage.clear();
     sessionStorage.setItem("access_token", authResp.data.access_token);
-    // sessionStorage.setItem("refres_token", authResp.data.refresh_token);
     sessionStorage.setItem("user_email", email);
 
     setAuth(sessionStorage.getItem("access_token"));
-
-    // console.log(AuthHeader());
-    // let demo = await axios.get(
-    //   "http://localhost:8080/api/v1/demo-controller",
-    //   AuthHeader()
-    // );
-    // console.log(demo);
-
     emptyForm();
   };
 
   const emptyForm = () => {
-    // setEmail("");
-    // setPassword("");
     window.location.reload(false);
   };
-
-  // useEffect(() => {
-  //   let auth = sessionStorage.getItem("access_token");
-  //   console.log(auth);
-  //   if (auth) {
-  //     console.log("key set:");
-  //   }
-  //   console.log(sessionStorage.getItem("access_token"));
-  // }, []);
 
   if (!auth) {
     return (

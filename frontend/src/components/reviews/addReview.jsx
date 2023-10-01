@@ -6,6 +6,8 @@ export default function AddReview({ id }) {
   const [review, setReview] = useState("");
   const [sscore, setScore] = useState(0);
 
+  // TODO ADD USESTATE FOR PAGE REFRESH ON ADDING REVIEW
+
   const reviewBody = () => {
     return {
       movieId: id,
@@ -20,19 +22,14 @@ export default function AddReview({ id }) {
   };
 
   const handleSubmit = (ev) => {
-    
     ev.preventDefault();
-    console.log("sessionStorage")
+    console.log("sessionStorage");
     console.table(sessionStorage.getItem("key"));
     console.log(reviewBody());
     axios.post(
       "http://localhost:8080/api/v1/review/add",
       reviewBody(),
-      {
-        headers: {
-          Authorization: "Bearer " + sessionStorage.getItem("key"),
-        },
-      }
+      AuthHeader()
     );
   };
 
@@ -42,8 +39,8 @@ export default function AddReview({ id }) {
         <label htmlFor="review-comment"></label>
         <label htmlFor="score"></label>
         <input
-        required
-        placeholder="score 0-5"
+          required
+          placeholder="score 0-5"
           pattern="^[0-5]$"
           type="text"
           name="score"
@@ -55,8 +52,8 @@ export default function AddReview({ id }) {
           value={sscore}
         />
         <input
-        placeholder="review"
-        required
+          placeholder="review"
+          required
           type="text"
           id="review-commment"
           onChange={(ev) => {

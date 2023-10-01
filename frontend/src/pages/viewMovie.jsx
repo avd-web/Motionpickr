@@ -24,8 +24,6 @@ export default function ViewMovie() {
     getWatchList();
   }, []);
 
-  // if(!movie){return <>loading...</>}
-
   if (AuthHeader() && movie) {
     return (
       <>
