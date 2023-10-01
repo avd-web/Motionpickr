@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import Register from "./Register";
 
 export default function Login() {
-  const [show, setShow] = useState(true);
-  const [auth, setAuth] = useState(null);
+  // const [show, setShow] = useState(true);
+  const [auth, setAuth] = useState(sessionStorage.getItem("access_token"));
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,12 +23,12 @@ export default function Login() {
     );
     console.log(authResp.data);
 
-    sessionStorage.clear();
+    // sessionStorage.clear();
     sessionStorage.setItem("access_token", authResp.data.access_token);
-    sessionStorage.setItem("refres_token", authResp.data.refresh_token);
+    // sessionStorage.setItem("refres_token", authResp.data.refresh_token);
     sessionStorage.setItem("user_email", email);
 
-    setShow(sessionStorage.getItem("key"));
+    setAuth(sessionStorage.getItem("access_token"));
 
     // console.log(AuthHeader());
     // let demo = await axios.get(
@@ -39,23 +39,23 @@ export default function Login() {
 
     emptyForm();
   };
+
   const emptyForm = () => {
-    setEmail("");
-    setPassword("");
-    // setShow(false);
+    // setEmail("");
+    // setPassword("");
+    window.location.reload(false);
   };
 
-  useEffect(() => {
-    console.log("useeffect activated");
-    if (sessionStorage.getItem("key")) {
-      setShow(false);
-      console.log("key set:");
-      console.log(sessionStorage.getItem("key"));
-      console.table(sessionStorage.getItem("key"));
-    }
-  }, []);
+  // useEffect(() => {
+  //   let auth = sessionStorage.getItem("access_token");
+  //   console.log(auth);
+  //   if (auth) {
+  //     console.log("key set:");
+  //   }
+  //   console.log(sessionStorage.getItem("access_token"));
+  // }, []);
 
-  if (show) {
+  if (!auth) {
     return (
       <div className="register-container">
         <h1 className="register-header"> Sign in </h1>

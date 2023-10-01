@@ -18,6 +18,7 @@ import Home from "./pages/Home";
 import Genre from "./pages/Genre";
 import "./styles/MAINstyles.css";
 import "./styles/normalize.css";
+import UserPage from "./pages/UserPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/friends" element={<Friends />} />
         <Route path="/recommended" element={<Recommended />} />
         <Route path="/watchlist" element={<WatchList />} />
-        {/* <Route path="/account" element={<AccountPage />} /> */}
+        <Route path="/userpage" element={<UserPage />} />
         {/* <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} /> */}
         <Route path="/genre/:genreid" element={<GenreInfo />} />
