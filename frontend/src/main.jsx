@@ -11,7 +11,6 @@ import ViewMovie from "./pages/viewMovie";
 import Recommended from "./pages/userRecommended";
 import WatchList from "./pages/watchList";
 import GenreInfo from "./pages/GenreInfo";
-import Home from "./pages/Home";
 
 // import Register from "./pages/Register";
 // import Login from "./pages/Login";
@@ -26,17 +25,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Header />
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/userpage" element={<UserPage />} />
         <Route path="/movie" element={<Movie />} />
         <Route path="/movie/:id" element={<ViewMovie />} />
-        <Route path="/friends" element={<Friends />} />
         <Route path="/recommended" element={<Recommended />} />
-        <Route path="/watchlist" element={<WatchList />} />
-        <Route path="/userpage" element={<UserPage />} />
-        {/* <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> */}
+
         <Route path="/genre/:genreid" element={<GenreInfo />} />
         <Route path="/genre" element={<Genre />} />
+
+        {/* <Route path="/watchlist" element={<WatchList />} />
+        <Route path="/friends" element={<Friends />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
