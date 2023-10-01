@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "../styles/registerSheet.css";
 import axios from "axios";
-import { AuthHeader } from "../auth/authorization";
-import { useEffect } from "react";
 import Register from "./Register";
 
 export default function Login() {

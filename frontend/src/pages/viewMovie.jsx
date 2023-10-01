@@ -6,6 +6,7 @@ import AddReview from "../components/reviews/addReview";
 import ViewReviews from "../components/reviews/viewReviews";
 import AddToWatchListButton from "../components/watchList/addToWatchListButton";
 import Movie from "../components/movie/movie";
+import Login from "./Login";
 
 export default function ViewMovie() {
   const { id } = useParams();
@@ -23,16 +24,25 @@ export default function ViewMovie() {
     getWatchList();
   }, []);
 
-  if(!movie){return <>loading...</>}
+  // if(!movie){return <>loading...</>}
 
-  return (
-    <div>
-      { console.log(movie.genres)}
-      <Movie title={movie.title} genres={movie.genres}/>
+  if (AuthHeader() && movie) {
+    return (
+      <>
+        <p>logged in</p>
+        {console.log(movie.genres)}
+        <Movie title={movie.title} genres={movie.genres} />
 
-      <AddReview id={id} />
-      <ViewReviews movie_id={id} />
-      <AddToWatchListButton movie_id={id} />
-    </div>
-  );
+        <AddReview id={id} />
+        <ViewReviews movie_id={id} />
+        <AddToWatchListButton movie_id={id} />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Login />
+      </>
+    );
+  }
 }
