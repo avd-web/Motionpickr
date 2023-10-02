@@ -48,7 +48,6 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO: Regex for certain password requirements needs to be implemented
 
     if (user.password === user.secondpassword) {
       console.log("succes");
@@ -58,7 +57,7 @@ export default function Register() {
         lastname: user.lastname,
         email: user.email,
         password: user.password,
-        // role : "USER",
+        role: "USER",
       };
       console.log(postUser);
 

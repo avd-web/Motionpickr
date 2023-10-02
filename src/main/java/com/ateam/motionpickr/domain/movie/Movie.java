@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +20,7 @@ public class Movie {
     @Id
     @GeneratedValue
     Long id;
-
     private String title;
-
     @ManyToMany
     @JsonManagedReference
     @JoinTable(
@@ -31,16 +30,31 @@ public class Movie {
     )
     private Set<Genre> genres = new HashSet<>();
 
+
+    @Column(length = 2000)
+    private String overview;
+    @Column(length = 2000)
+    private String tagline;
+    private String posterLink;
+    private double popularity;
     @JsonIgnore
     private int dataId;
 
-
     public Movie(String title, Set<Genre> genres, int dataId) {
-        this.genres = genres;
         this.title = title;
+        this.genres = genres;
         this.dataId = dataId;
     }
 
+    public Movie(String title, Set<Genre> genres, String overview, String tagline, String posterLink, double popularity, int dataId) {
+        this.title = title;
+        this.genres = genres;
+        this.overview = overview;
+        this.tagline = tagline;
+        this.posterLink = posterLink;
+        this.popularity = popularity;
+        this.dataId = dataId;
+    }
 
     @Override
     public String toString() {
