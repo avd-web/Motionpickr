@@ -42,7 +42,7 @@ public class RecommendedController {
 
 
 
-    @GetMapping(name = "systemRec")
+    @GetMapping(name = "movies")
     public List<Movie>getRecommendedMovies(@AuthenticationPrincipal UserDetails details){
         User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
 
@@ -61,6 +61,15 @@ public class RecommendedController {
         return prefMap.entrySet().stream()
                 .sorted((x, y)-> y.getValue()).map(Entry::getKey).toList();
     }
+
+    @GetMapping
+    public RecordedUserPreferences getPreferences(@AuthenticationPrincipal UserDetails details){
+        User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
+
+        return userPreferencesRepository.findFirstByUserOrderByInputDateDesc(userFrom);
+    }
+
+
 
 
 
