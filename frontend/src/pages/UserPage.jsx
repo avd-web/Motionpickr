@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { DashboardContext } from "./Context";
-import Recommended from "./recommended";
+import Recommended from "./userRecommended";
 
 export default function UserPage() {
   const access_token = useContext(DashboardContext);

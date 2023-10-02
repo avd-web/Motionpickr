@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import MovieItem from "../components/moviecomponents/MovieItem";
+import MovieList from "../components/moviecomponents/MovieItem";
 import AlphabetBar from "../components/moviecomponents/AlphabetBar";
 import MovieSearch from "../components/moviecomponents/MovieSearch";
 import Pagination from "../components/generalcomponent/Pagination";
 import axios from "axios";
+import { defer } from "react-router-dom";
 
 export default function Movie() {
   const [movies, setMovies] = useState([]);
@@ -13,7 +14,6 @@ export default function Movie() {
   const [url, setUrl] = useState();
   const [currentLetter, setCurrentLetter] = useState();
   const [search, setSearch] = useState();
-  const overviewPage = true;
 
   const fetchFilter = (fetchFilter) => {
     return fetchFilter;
@@ -56,6 +56,7 @@ export default function Movie() {
       default:
         fetchFilter(movieStandard());
     }
+
   }, [page, currentLetter]);
 
   return (
@@ -72,11 +73,13 @@ export default function Movie() {
         movieSearch={movieSearch}
         setPage={setPage}
       />
-
+      <table>
+        <thead><tr><th>title</th><th>description</th><th>score</th><th>nav</th></tr></thead>
+        <tbody></tbody>
+      </table>
       {movies.map((movie) => (
-        <MovieItem movie={movie} key={movie.id} overviewPage={overviewPage} />
+        <MovieList movie={movie} key={movie.id} />
       ))}
-
       <Pagination totalPages={totalPages} page={page} setPage={setPage} />
     </div>
   );

@@ -6,9 +6,10 @@ import Movie from "../movie/movie";
 
 export default function ViewWatchList() {
     const [watchList, setwatchList] = useState([]);
+    const access_token = useContext(DashboardContext);
   
     useEffect(() => {
-      const getWatchList = async() => {
+      const getWatchList = async () => {
         let list = await axios.get(
           "http://localhost:8080/api/v1/watchlist",AuthHeader()
         );
