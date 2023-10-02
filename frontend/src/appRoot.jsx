@@ -13,6 +13,8 @@ import GenreInfo from "./pages/GenreInfo";
 import Genre from "./pages/Genre";
 import Home from "./pages/Home";
 import HomePage from "./pages/HomePage";
+
+
 export default function AppRoot() {
   const [token, setToken] = useState(null);
   const removeToken = () => {
@@ -24,20 +26,27 @@ export default function AppRoot() {
       <DashboardContext.Provider value={token}>
         <BrowserRouter>
           <Header />
+        <SetTokenFunctionContext.Provider value={setToken}>
           <Routes>
-            <Route index element={<HomePage />} />
-            <Route
-              path="/home"
-              element={
-                <Home setTokenEvent={setToken} removeTokenEvent={removeToken} />
-              }
-            />
+    
+              <Route index element={<HomePage />} />
+
+              <Route
+                path="/home"
+                element={
+                  <Home
+                    setTokenEvent={setToken}
+                    removeTokenEvent={removeToken}
+                  />
+                }
+              />
+       
             <Route path="/movie" element={<Movie />} />
             <Route path="/movie/:id" element={<ViewMovie />} />
             <Route path="/recommended" element={<Recommended />} />
             <Route path="/watchlist" element={<WatchList />} />
             <Route path="/genre" element={<Genre />}></Route>
-          </Routes>
+          </Routes>     </SetTokenFunctionContext.Provider>
 
           <Footer />
         </BrowserRouter>

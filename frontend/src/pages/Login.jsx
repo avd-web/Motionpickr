@@ -11,7 +11,7 @@ export default function Login({persistTokenEvent}) {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     let authBody = { email: email, password: password };
     console.log(authBody);
 
@@ -34,7 +34,10 @@ export default function Login({persistTokenEvent}) {
     <div className="register-container">
       <h1 className="register-header"> Sign in </h1>
       <div className="label-container">
-        <form className="register-labels" onSubmit={()=>{handleSubmit()}}>
+        <form className="register-labels" onSubmit={(ev)=>{
+          console.log(ev);
+          ev.preventDefault();
+          handleSubmit()}}>
           <div>
             <label htmlFor="email" id="email-label">
               Enter e-mail:
