@@ -24,7 +24,7 @@ export default function ViewMovie() {
     getWatchList();
   }, []);
 
-  if (AuthHeader() && movie) {
+  if (movie) {
     return (
       <>
         <p>logged in</p>

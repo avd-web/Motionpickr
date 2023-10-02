@@ -13,7 +13,6 @@ export default function ViewReviews({ movie_id }) {
       await axios
         .get(
           "http://localhost:8080/api/v1/review/movie/" + movie_id,
-          AuthHeader()
         )
         .then((data) => {
           setReviews(data.data);
