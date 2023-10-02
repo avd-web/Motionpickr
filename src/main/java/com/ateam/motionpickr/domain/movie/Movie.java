@@ -20,7 +20,9 @@ public class Movie {
     @Id
     @GeneratedValue
     Long id;
+
     private String title;
+
     @ManyToMany
     @JsonManagedReference
     @JoinTable(
@@ -36,15 +38,13 @@ public class Movie {
     @Column(length = 2000)
     private String tagline;
     private String posterLink;
+
+    @Column()
     private double popularity;
+
     @JsonIgnore
     private int dataId;
 
-    public Movie(String title, Set<Genre> genres, int dataId) {
-        this.title = title;
-        this.genres = genres;
-        this.dataId = dataId;
-    }
 
     public Movie(String title, Set<Genre> genres, String overview, String tagline, String posterLink, double popularity, int dataId) {
         this.title = title;

@@ -17,7 +17,11 @@ import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Component
@@ -84,8 +88,18 @@ public class OpenCSVParser implements CommandLineRunner {
     private Movie createMovieFromArray(String[] line) {
         String genres = line[3];
         int dataId = Integer.valueOf(line[5]);
+        String tagline = line[19];
+        String overview = line[9];
+        double popularity = Double.valueOf(line[10]);
 
+        String copyPath = line[1];
+        String copyPath2 = line[11];
 
+        List<String> links = ParseCreditValues.getFieldName(copyPath, "poster_path");
+        if(!links.isEmpty()) {
+            links.set(0, links.get(0).replace(": '", ""));
+        }
+        links.add(copyPath2);
 
         String[] genresArray = genres.split("'");
         List<String> genreNames = Arrays.stream(genresArray).filter(term -> Character.isUpperCase(term.charAt(0))).toList();
@@ -108,20 +122,7 @@ public class OpenCSVParser implements CommandLineRunner {
             System.exit(-1);
         }
 
-        return new Movie(line[20], setOfGenres, dataId);
-    }
-
-
-    @Override
-    public void run(String... args) throws Exception {
-        if (movieRepository.count() == 0) {
-            seeder();
-        }
-
-        if (actorRepository.count() == 0) {
-            seedActorfromCsv();
-        }
-
+        return new Movie(line[20], setOfGenres, overview, tagline, links.isEmpty() ? "" : links.get(0), popularity, dataId);
     }
 
     private void seeder() throws IOException {
@@ -134,5 +135,19 @@ public class OpenCSVParser implements CommandLineRunner {
                 System.out.println(movie.getTitle());
             }
         }
+    }
+
+
+
+    @Override
+    public void run(String... args) throws Exception {
+        if (movieRepository.count() == 0) {
+            seeder();
+        }
+
+        if (actorRepository.count() == 0) {
+            seedActorfromCsv();
+        }
+
     }
 }
