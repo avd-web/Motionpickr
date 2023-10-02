@@ -1,19 +1,19 @@
 import React from "react";
-import { useContext } from "react";
-import { DashboardContext } from "./Context";
-import Recommended from "./userRecommended";
+import Login from "./Login";
+import { AuthHeader } from "../auth/authorization";
 
 export default function UserPage() {
-  const access_token = useContext(DashboardContext);
-
-  if (access_token) {
+  if (AuthHeader()) {
     return (
       <>
-        {/* <p>{access_token}</p> */}
-        <Recommended />
+        <p>logged in</p>
       </>
     );
   } else {
-    return <>loading....</>;
+    return (
+      <>
+        <Login />
+      </>
+    );
   }
 }

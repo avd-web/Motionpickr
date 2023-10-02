@@ -1,22 +1,18 @@
-import { React, useEffect, useState } from "react";
-import ViewWatchList from "../components/watchList/viewWatchList";
-import { useContext } from "react";
-import { DashboardContext } from "./Context";
-import Home from "./Home";
+import { React } from "react";
+import Login from "./Login";
+import { AuthHeader } from "../auth/authorization";
 
 export default function WatchList() {
-  const access_token = useContext(DashboardContext);
-
-  if (access_token) {
+  if (AuthHeader()) {
     return (
       <>
-        <p>{access_token}</p>
+        <p>logged in</p>
       </>
     );
   } else {
     return (
       <>
-        <Home />
+        <Login />
       </>
     );
   }

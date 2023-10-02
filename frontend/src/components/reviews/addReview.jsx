@@ -6,6 +6,8 @@ export default function AddReview({ id }) {
   const [review, setReview] = useState("");
   const [sscore, setScore] = useState(0);
 
+  // TODO ADD USESTATE FOR PAGE REFRESH ON ADDING REVIEW
+
   const reviewBody = () => {
     return {
       movieId: id,
@@ -21,7 +23,8 @@ export default function AddReview({ id }) {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    console.log(id);
+    console.log("sessionStorage");
+    console.table(sessionStorage.getItem("key"));
     console.log(reviewBody());
     axios.post(
       "http://localhost:8080/api/v1/review/add",
@@ -30,36 +33,38 @@ export default function AddReview({ id }) {
     );
   };
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="review-comment"></label>
-        <label htmlFor="score"></label>
-        <input
-        required
-        placeholder="score 0-5"
-          pattern="^[0-5]$"
-          type="text"
-          name="score"
-          id="score"
-          onChange={(ev) => {
-            setScore(ev.target.value);
-          }}
-          title="only digits 0 to 5!"
-          value={sscore}
-        />
-        <input
-        placeholder="review"
-        required
-          type="text"
-          id="review-commment"
-          onChange={(ev) => {
-            setReview(ev.target.value);
-          }}
-          value={review}
-        />
-        <button type="submit">add</button>
-      </form>
-    </div>
-  );
+  if (AuthHeader()) {
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="review-comment"></label>
+          <label htmlFor="score"></label>
+          <input
+            required
+            placeholder="score 0-5"
+            pattern="^[0-5]$"
+            type="text"
+            name="score"
+            id="score"
+            onChange={(ev) => {
+              setScore(ev.target.value);
+            }}
+            title="only digits 0 to 5!"
+            value={sscore}
+          />
+          <input
+            placeholder="review"
+            required
+            type="text"
+            id="review-commment"
+            onChange={(ev) => {
+              setReview(ev.target.value);
+            }}
+            value={review}
+          />
+          <button type="submit">add</button>
+        </form>
+      </div>
+    );
+ } else return;
 }
