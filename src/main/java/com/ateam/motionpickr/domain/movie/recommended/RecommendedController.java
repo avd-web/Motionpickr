@@ -1,16 +1,24 @@
 package com.ateam.motionpickr.domain.movie.recommended;
 
 
+import com.ateam.motionpickr.domain.cast.movieCast.Cast;
+import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
 import com.ateam.motionpickr.domain.movie.Movie;
 import com.ateam.motionpickr.domain.movie.MovieRepository;
 import com.ateam.motionpickr.security.user.User;
 import com.ateam.motionpickr.security.user.UserRepository;
+import com.ateam.motionpickr.userPreferences.RecordedUserPreferences;
+import com.ateam.motionpickr.userPreferences.UserPreferencesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map.Entry;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -22,42 +30,38 @@ public class RecommendedController {
     UserRepository userRepository;
 
     @Autowired
-    MovieRepository movieRepository;
+    UserPreferencesRepository userPreferencesRepository;
 
     @Autowired
-    RecommendedRepository recommendedRepository;
+    CastRepository castRepository;
 
 
-    @GetMapping
-    public List<Recommendation> getRecommended(@AuthenticationPrincipal UserDetails details){
-        User user=userRepository.findByEmail(details.getUsername()).orElseThrow();
-        return user.getRecommended();
-    }
+    @Autowired
+    MovieRepository movieRepository;
 
-    @PostMapping
-    public void recommendTo(@RequestBody RecommendedPto pto, @AuthenticationPrincipal UserDetails details){
+
+
+
+    @GetMapping(name = "systemRec")
+    public List<Movie>getRecommendedMovies(@AuthenticationPrincipal UserDetails details){
         User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
-        User userTo=userRepository.findByEmail(pto.getEmail()).orElseThrow();
-        Movie movie=movieRepository.findById(pto.getMovieId()).orElseThrow();
 
-        List<Recommendation>recommendations=userTo.getRecommended();
-        recommendations.add(new Recommendation(userTo,userFrom,movie));
+        RecordedUserPreferences recordedUserPreferences =
+                userPreferencesRepository.findFirstByUserOrderByInputDateDesc(userFrom);
 
-        userTo.setRecommended(recommendations);
-        userRepository.save(userTo);
+        List<Movie>movies= movieRepository.findAll();
+
+        HashMap<Movie,Integer>prefMap=new HashMap<>();
+        for(Movie movie:movies){
+            List<Cast>castList=castRepository.findByMovieId(movie.getId());
+            prefMap.put(movie,recordedUserPreferences.evaluate(movie,castList));
+        }
+
+
+        return prefMap.entrySet().stream()
+                .sorted((x, y)-> y.getValue()).map(Entry::getKey).toList();
     }
 
-    public void deleteRecommendation(@RequestBody RecommendedPto pto,@AuthenticationPrincipal UserDetails details) {
-        User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
-        User userTo=userRepository.findByEmail(pto.getEmail()).orElseThrow();
-        Movie movie=movieRepository.findById(pto.getMovieId()).orElseThrow();
-
-        List<Recommendation>recommendations=userTo.getRecommended().stream().filter(
-                (item)-> !item.equals(new Recommendation(userTo,userFrom,movie))).collect(Collectors.toList());
-
-        userTo.setRecommended(recommendations);
-        userRepository.save(userTo);
-    }
 
 
 
