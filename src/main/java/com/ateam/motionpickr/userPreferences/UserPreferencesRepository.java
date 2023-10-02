@@ -4,10 +4,11 @@ import com.ateam.motionpickr.security.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface UserPreferencesRepository extends JpaRepository<RecordedUserPreferences,Long> {
-    RecordedUserPreferences findFirstByUserOrderByInputDateDesc(User user);
-    List<RecordedUserPreferences> findByUser(User user);
+public interface UserPreferencesRepository extends JpaRepository<UserPreferences,Long> {
+    UserPreferences findFirstByUserOrderByInputDateDesc(User user);
+    Optional<List<UserPreferences>> findByUser(User user);
 
 
 }

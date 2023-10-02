@@ -11,7 +11,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 public  class MovieMatcher {
-   private RecordedUserPreferences preferences;
+   private UserPreferences preferences;
 
     public int matchGenres(   Set<Genre> genres){
 

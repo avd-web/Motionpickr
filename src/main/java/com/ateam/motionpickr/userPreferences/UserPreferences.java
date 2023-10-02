@@ -20,7 +20,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity(name = "preferences")
-public class RecordedUserPreferences {
+public class UserPreferences {
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
    @Column(name = "id", nullable = false)
