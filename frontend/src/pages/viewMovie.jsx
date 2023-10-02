@@ -5,6 +5,7 @@ import { AuthHeader } from "../auth/authorization";
 import AddReview from "../components/reviews/addReview";
 import ViewReviews from "../components/reviews/viewReviews";
 import AddToWatchListButton from "../components/watchList/addToWatchListButton";
+import MovieItem from "../components/moviecomponents/MovieItem";
 
 export default function ViewMovie() {
   const { id } = useParams();
@@ -19,14 +20,11 @@ export default function ViewMovie() {
       setMovie(data.data);
     };
     fetchMovie();
-    console.log("movie: "+movie);
   }, []);
   return (
     <div>
-      <h2>
-        {movie===null?null: movie.title}
-      </h2>
-      <span></span>
+      <MovieItem movie={movie}/> 
+        
        <AddReview id={id}/>
       <ViewReviews movie_id={id}/>
       <AddToWatchListButton movie_id={id}/>

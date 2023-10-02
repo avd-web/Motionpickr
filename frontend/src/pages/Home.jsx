@@ -3,6 +3,7 @@ import axios from "axios";
 import { DashboardContext } from "./Context";
 import UserPage from "./UserPage";
 import Register from "./Register";
+import TrendingMovies from "../components/homepagecomponents/TrendingMovies";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -92,8 +93,10 @@ export default function Home() {
     <>
       <DashboardContext.Provider value={authResp}>
         <UserPage />
+        
       </DashboardContext.Provider>
       <p>You are logged in</p>
+      <TrendingMovies/>
       <button onClick={handleLogout}>Logout</button>
     </>
   );
