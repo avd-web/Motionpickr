@@ -56,8 +56,6 @@ public class RecommendedController {
             List<Cast>castList=castRepository.findByMovieId(movie.getId());
             prefMap.put(movie,recordedUserPreferences.evaluate(movie,castList));
         }
-
-
         return prefMap.entrySet().stream()
                 .sorted((x, y)-> y.getValue()).map(Entry::getKey).toList();
     }
