@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class ReviewDto {
     long movieId;
-
+    long id;
     UserDto userDto;
     String review;
 
@@ -21,10 +21,10 @@ public class ReviewDto {
 
 
 
-    public static ReviewDto toDto(Review review){
-        long movId=review.getMovie().getId();
-        UserDto userDto1=UserDto.toDto(review.getUser());
-        return new ReviewDto(movId,userDto1,review.getComment(),review.getScore());
+    public static ReviewDto toDto(Review review) {
+        long movieId = review.getMovie().getId();
+        UserDto userDto1 = UserDto.toDto(review.getUser());
+        return new ReviewDto(movieId,review.getId(), userDto1, review.getComment(), review.getScore());
     }
 
     @Override

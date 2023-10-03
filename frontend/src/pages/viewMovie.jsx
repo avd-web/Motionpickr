@@ -2,45 +2,58 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthHeader } from "../auth/authorization";
-import AddReview from "../components/reviews/addReview";
-import ViewReviews from "../components/reviews/viewReviews";
+import AddReview from "../components/pageComponents/reviews/addReview";
+import ViewReviews from "../components/pageComponents/reviews/viewReviews";
 import AddToWatchListButton from "../components/watchList/addToWatchListButton";
-import Movie from "../components/movie/movie";
-import Login from "./Login";
+import MovieItem from "../components/pageComponents/moviecomponents/MovieItem";
+import Home from "../pages/HomePage";
 
 export default function ViewMovie() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState(undefined);
+  const [cast, setCast] = useState([{}]);
+
+  const fetchCastByMovie = async () => {
+    const response = await axios.get(
+      `http://localhost:8080/api/v1/movie/cast/${id}`
+    );
+
+    const responseCast = response.data.map((castMember) => ({
+      name: castMember.actor.name,
+      character: castMember.character,
+      id: castMember.id * 1000,
+    }));
+
+    setCast(responseCast);
+  };
+
+  const getMovie = async () => {
+    const data = await axios.get("http://localhost:8080/api/v1/movie/" + id);
+    setMovie(data.data);
+  };
 
   useEffect(() => {
-    let getWatchList = async () => {
-      let data = await axios.get(
-        "http://localhost:8080/api/v1/movie/" + id,
-        AuthHeader()
-      );
-
-      setMovie(data.data);
-    };
-    getWatchList();
+    getMovie();
+    fetchCastByMovie();
   }, []);
 
   if (movie) {
     return (
       <>
-        <p>logged in</p>
-        {console.log(movie.genres)}
-        <Movie title={movie.title} genres={movie.genres} />
+        <MovieItem
+          movie={movie}
+          title={movie.title}
+          genres={movie.genres}
+          render={"viewMovie"}
+          cast={cast}
+        />
 
         <AddReview id={id} />
-        <ViewReviews movie_id={id} />
+        <ViewReviews movie_id={id} key={movie.id} />
         <AddToWatchListButton movie_id={id} />
       </>
     );
   } else {
-    return (
-      <>
-        <Login />
-      </>
-    );
+    return <Home />;
   }
 }

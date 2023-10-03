@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
-import GenreItem from "../components/genrecomponents/GenreItem";
+import GenreItem from "../components/pageComponents/genrecomponents/GenreItem";
 import '../styles/genreSheet.scss';
 
 export default function Genre() {

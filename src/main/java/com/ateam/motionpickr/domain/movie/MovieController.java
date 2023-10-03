@@ -3,6 +3,7 @@ package com.ateam.motionpickr.domain.movie;
 import com.ateam.motionpickr.domain.cast.movieCast.Cast;
 import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
+import com.ateam.motionpickr.supportclasses.SearchHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @CrossOrigin
@@ -62,7 +64,11 @@ public class MovieController {
     @GetMapping("letter/{letter}")
     public ResponseEntity<Map<String, Object>> findByLetter(@PathVariable("letter") String letter, @RequestParam int page, @RequestParam int size) {
         Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
-        Page<Movie> searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
+        Page<Movie> searchPage;
+        if (letter.equalsIgnoreCase("Other")) {
+            searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase()
+        } else searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
+
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
         response.put("movies", movies);
