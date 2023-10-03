@@ -23,6 +23,9 @@ export default function MovieSearch({
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="email" id="email-label">
+          Search:
+        </label>
         <input type="text" onChange={handleSearch} value={search} />
         <input
           className="btn btn--stretched btn--accent searchbutton"

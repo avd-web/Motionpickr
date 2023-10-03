@@ -8,7 +8,6 @@ export default function Pagination({ page, totalPages, setPage }) {
     pageArray.push(i);
   }
 
-
   const showRange = pageArray.filter((number) => {
     if (page === 0) {
       return number <= page + 3 || number === totalPages - 1;
@@ -52,7 +51,7 @@ export default function Pagination({ page, totalPages, setPage }) {
   };
 
   return (
-    <div className="container">
+    <div className="container--pagination">
       <ul className="pagination">
         <button className="pagination-button button1" onClick={handlePrevious}>
           {"<"}

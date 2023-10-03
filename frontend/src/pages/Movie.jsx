@@ -84,7 +84,7 @@ export default function Movie() {
                 currentletter={currentLetter}
               />
 
-              <div>
+              <div className="container--movie">
                 <table>
                   <thead>
                     <tr>
@@ -94,22 +94,22 @@ export default function Movie() {
                       <th>nav</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                    {movies.map((movie) => (
+                      <MovieItem
+                        movie={movie}
+                        key={movie.id}
+                        render={"movielist"}
+                        genres={movie.genres}
+                      />
+                    ))}
+                    <Pagination
+                      totalPages={totalPages}
+                      page={page}
+                      setPage={setPage}
+                    />
+                  </tbody>
                 </table>
-
-                {movies.map((movie) => (
-                  <MovieItem
-                    movie={movie}
-                    key={movie.id}
-                    render={"movielist"}
-                    genres={movie.genres}
-                  />
-                ))}
-                <Pagination
-                  totalPages={totalPages}
-                  page={page}
-                  setPage={setPage}
-                />
               </div>
             </div>
           </div>
