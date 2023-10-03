@@ -958,8 +958,15 @@ a {
 .alphabet-bar {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .searchmovie {
+  /* width: 600px; */
   margin: auto;
+}
+
+.searchbutton {
+  position: relative;
+  left: 25%;
 }
