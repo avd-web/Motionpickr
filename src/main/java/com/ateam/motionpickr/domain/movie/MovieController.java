@@ -64,11 +64,7 @@ public class MovieController {
     @GetMapping("letter/{letter}")
     public ResponseEntity<Map<String, Object>> findByLetter(@PathVariable("letter") String letter, @RequestParam int page, @RequestParam int size) {
         Pageable searchMovie = PageRequest.of(page, size, Sort.by("title"));
-        Page<Movie> searchPage;
-        if (letter.equalsIgnoreCase("Other")) {
-            searchPage = movieRepository.findMoviesByTitleContainsIgnoringCase()
-        } else searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
-
+        Page<Movie> searchPage = movieRepository.findMoviesByTitleStartingWithIgnoringCase(letter, searchMovie);
         List<Movie> movies = searchPage.getContent();
         Map<String, Object> response = new HashMap<>();
         response.put("movies", movies);
