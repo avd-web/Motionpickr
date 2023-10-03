@@ -77,7 +77,7 @@ export default function Register() {
     <div>
       <div className="login-container">
         <div>
-          <h1> Register </h1>
+          <h2> Register </h2>
           <form onSubmit={handleSubmit}>
             <div className="label-container">
               <div>
@@ -138,7 +138,9 @@ export default function Register() {
                 {/* <input type="submit" /> */}
               </div>
 
-              <button type="submit">Submit</button>
+              <button className="btn btn--stretched" type="submit">
+                Submit
+              </button>
             </div>
           </form>
         </div>

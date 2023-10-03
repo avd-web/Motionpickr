@@ -36,7 +36,7 @@ export default function Login() {
     return (
       <div className="login-container">
         <div>
-          <h1> Sign in </h1>
+          <h2> Sign in </h2>
           <form onSubmit={handleSubmit}>
             <div className="label-container">
               <div>
@@ -67,7 +67,9 @@ export default function Login() {
                   }}
                 />
               </div>
-              <button type="submit">login</button>
+              <button className="btn btn--stretched" type="submit">
+                login
+              </button>
             </div>
           </form>
         </div>
