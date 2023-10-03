@@ -27,7 +27,7 @@ public  class MovieMatcher {
 
     public int matchCast(List<Cast> cast){
         int count=0;
-        List<Cast>prefferedCast=preferences.getCastset();
+        Set<Cast>prefferedCast=preferences.getCastset();
         for (Cast c:cast){
             if(prefferedCast.contains(c))
                 count++;

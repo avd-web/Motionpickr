@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Set;
@@ -21,5 +20,5 @@ public class UserPreferencesPto {
     double absMinPopularity;
 
     Set<Long> genres;
-    List<Long> castset;
+    Set<Long> castSet;
 }

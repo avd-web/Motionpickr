@@ -41,7 +41,7 @@ public class UserPreferences {
     Set<Genre> genres;
 
     @OneToMany
-    List<Cast> castset;
+    Set<Cast> castset;
 
    public int evaluate(Movie movie, List<Cast> castList){
        int count=0;

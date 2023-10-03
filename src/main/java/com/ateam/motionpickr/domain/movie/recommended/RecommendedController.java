@@ -21,7 +21,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/recommended")
@@ -95,10 +94,10 @@ public class RecommendedController {
         userPreferences.setGenres(genres);
 
         Set<Cast>casts=new HashSet<>();
-        for(Long l: preferences.getCastset()){
+        for(Long l: preferences.getCastSet()){
             castRepository.findById(l).ifPresent(casts::add);
         }
-        userPreferences.setCastset((List<Cast>) casts);
+        userPreferences.setCastset(casts);
 
     }
 
