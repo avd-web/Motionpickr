@@ -36,8 +36,8 @@ export default function Login() {
     return (
       <div className="login-container">
         <div>
-          <h2> Sign in </h2>
           <form onSubmit={handleSubmit}>
+            <h2> Sign in </h2>
             <div className="label-container">
               <div>
                 <label htmlFor="email" id="email-label">

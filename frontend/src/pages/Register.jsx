@@ -77,8 +77,8 @@ export default function Register() {
     <div>
       <div className="login-container">
         <div>
-          <h2> Register </h2>
           <form onSubmit={handleSubmit}>
+            <h2> Register </h2>
             <div className="label-container">
               <div>
                 <label htmlFor="username-input" value={user.name}>

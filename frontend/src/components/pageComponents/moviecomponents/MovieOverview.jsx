@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../styles/movieOverview.scss";
+// import "../../../styles/movieOverview.scss";
 
 export default function MovieOverview({ movie, genres, cast }) {
   return (

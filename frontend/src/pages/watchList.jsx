@@ -4,11 +4,7 @@ import { AuthHeader } from "../auth/authorization";
 
 export default function WatchList() {
   if (AuthHeader()) {
-    return (
-      <>
-        <p>logged in</p>
-      </>
-    );
+    return <></>;
   } else {
     return (
       <>
