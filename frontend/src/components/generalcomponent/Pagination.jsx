@@ -8,8 +8,6 @@ export default function Pagination({ page, totalPages, setPage }) {
     pageArray.push(i);
   }
 
-  console.log(`current page ${page}`);
-  console.log(`total pages : ${totalPages}`);
 
   const showRange = pageArray.filter((number) => {
     if (page === 0) {
@@ -42,8 +40,6 @@ export default function Pagination({ page, totalPages, setPage }) {
       setPage(page + 1);
     } else alert("limit reached");
   };
-
-  console.log(showRange);
 
   const handlePrevious = () => {
     if (page > 0) {

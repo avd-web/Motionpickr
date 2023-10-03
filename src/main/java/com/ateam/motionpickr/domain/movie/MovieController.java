@@ -3,6 +3,7 @@ package com.ateam.motionpickr.domain.movie;
 import com.ateam.motionpickr.domain.cast.movieCast.Cast;
 import com.ateam.motionpickr.domain.cast.movieCast.CastRepository;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
+import com.ateam.motionpickr.supportclasses.SearchHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @CrossOrigin

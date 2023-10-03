@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import MovieList from "../components/moviecomponents/MovieItem";
-import AlphabetBar from "../components/moviecomponents/AlphabetBar";
-import MovieSearch from "../components/moviecomponents/MovieSearch";
+import MovieItem from "../components/pageComponents/moviecomponents/MovieItem";
+import AlphabetBar from "../components/pageComponents/moviecomponents/AlphabetBar";
+import MovieSearch from "../components/pageComponents/moviecomponents/MovieSearch";
 import Pagination from "../components/generalcomponent/Pagination";
 import axios from "axios";
 
@@ -44,6 +44,7 @@ export default function Movie() {
     setTotalPages(res.data.totalPages);
   };
 
+
   useEffect(() => {
     switch (url) {
       case "letter":
@@ -83,7 +84,7 @@ export default function Movie() {
         <tbody></tbody>
       </table>
       {movies.map((movie) => (
-        <MovieList movie={movie} key={movie.id} />
+        <MovieItem movie={movie} key={movie.id} render={"movielist"} genres={movie.genres} />
       ))}
       <Pagination totalPages={totalPages} page={page} setPage={setPage} />
     </div>

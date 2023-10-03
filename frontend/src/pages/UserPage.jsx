@@ -6,7 +6,7 @@ export default function UserPage() {
   if (AuthHeader()) {
     return (
       <>
-        <p>logged in</p>
+        <p></p>
       </>
     );
   } else {

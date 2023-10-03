@@ -1,7 +1,6 @@
-import { useState } from "react";
+
 
 export default function MovieSearch({ search, setSearch, movieSearch, setPage }) {
-  const [currentSearch, setCurrentSearch] = useState("")
 
   const handleSearch = (e) => {
       setSearch(e.target.value);

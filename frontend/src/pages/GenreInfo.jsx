@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MoviePerGenre from "../components/genrecomponents/MoviePerGenre";
+import MoviePerGenre from "../components/pageComponents/genrecomponents//MoviePerGenre";
 
 export default function GenreInfo() {
   const { id } = useParams();
