@@ -7,6 +7,7 @@ export default function Nav() {
     { name: "Movies", link: "/movie" },
     { name: "Recommended", link: "/recommended" },
     { name: "Account", link: "/userpage" },
+    { name: "Watchlist", link: "/watchlist" },
   ];
 
   return (

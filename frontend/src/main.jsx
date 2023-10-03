@@ -12,6 +12,7 @@ import Genre from "./pages/Genre";
 import "./styles/MAINstyles.css";
 import "./styles/normalize.css";
 import UserPage from "./pages/UserPage";
+import WatchList from "./pages/watchList";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -26,9 +27,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         <Route path="/genre/:genreid" element={<GenreInfo />} />
         <Route path="/genre" element={<Genre />} />
-
-        {/* <Route path="/watchlist" element={<WatchList />} />
-        <Route path="/friends" element={<Friends />} /> */}
+        <Route path="/watchlist" element={<WatchList />} />
+        {/* <Route path="/friends" element={<Friends />} /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

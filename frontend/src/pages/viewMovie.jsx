@@ -1,12 +1,11 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { AuthHeader } from "../auth/authorization";
 import AddReview from "../components/pageComponents/reviews/addReview";
 import ViewReviews from "../components/pageComponents/reviews/viewReviews";
-import AddToWatchListButton from "../components/watchList/addToWatchListButton";
-import MovieItem from "../components/pageComponents/moviecomponents/MovieItem";
 import Home from "../pages/HomePage";
+import AddToWatchListButton from "../components/pageComponents/watchList/addToWatchListButton";
+import MovieOverview from "../components/pageComponents/viewMovieComponent/MovieOverview";
 
 export default function ViewMovie() {
   const { id } = useParams();
@@ -40,7 +39,7 @@ export default function ViewMovie() {
   if (movie) {
     return (
       <>
-        <MovieItem
+        <MovieOverview
           movie={movie}
           title={movie.title}
           genres={movie.genres}

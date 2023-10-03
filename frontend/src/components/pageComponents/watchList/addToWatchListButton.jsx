@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { AuthHeader } from '../../auth/authorization'
+import { AuthHeader } from "../../../auth/authorization";
 
 export default function AddToWatchListButton({movie_id}) {
 
