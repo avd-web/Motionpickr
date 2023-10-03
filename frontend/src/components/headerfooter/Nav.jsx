@@ -11,8 +11,12 @@ export default function Nav() {
 
   return (
     <>
-      <nav>
-        <ul>
+      <nav className="nav">
+        {/* <a class="nav__brand" href="/"><img src="images/logo.svg" alt="" /></a>
+        <svg class="icon icon--white nav__toggler">
+          <use xlink:href="images/sprite.svg#menu"></use>
+        </svg> */}
+        <ul className="list nav__list">
           {LinkData.map((LinkData) => (
             <li className="nav__item" key={LinkData.name}>
               <Link to={LinkData.link}>{LinkData.name}</Link>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import "../styles/MainStyles.scss";
 // import "../styles/registerSheet.css";
-import "../styles/login.scss";
+// import "../styles/login.scss";
 import axios from "axios";
 import Register from "./Register";
 
@@ -36,8 +36,8 @@ export default function Login() {
     return (
       <div className="login-container">
         <div>
-          <h1 className="register-header"> Sign in </h1>
-          <form className="register-labels" onSubmit={handleSubmit}>
+          <h1> Sign in </h1>
+          <form onSubmit={handleSubmit}>
             <div className="label-container">
               <div>
                 <label htmlFor="email" id="email-label">
