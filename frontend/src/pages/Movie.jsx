@@ -85,31 +85,25 @@ export default function Movie() {
               />
 
               <div className="container--movie">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>title</th>
-                      <th>description</th>
-                      <th>score</th>
-                      <th>nav</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {movies.map((movie) => (
-                      <MovieItem
-                        movie={movie}
-                        key={movie.id}
-                        render={"movielist"}
-                        genres={movie.genres}
-                      />
-                    ))}
-                    <Pagination
-                      totalPages={totalPages}
-                      page={page}
-                      setPage={setPage}
+                <div className="grid-container">
+                  {/* <div className="grid-item">poster</div>
+                  <div className="grid-item">title</div>
+                  <div className="grid-item">description</div>
+                  <div className="grid-item">score</div> */}
+                  {movies.map((movie) => (
+                    <MovieItem
+                      movie={movie}
+                      key={movie.id}
+                      render={"movielist"}
+                      genres={movie.genres}
                     />
-                  </tbody>
-                </table>
+                  ))}
+                  <Pagination
+                    totalPages={totalPages}
+                    page={page}
+                    setPage={setPage}
+                  />
+                </div>
               </div>
             </div>
           </div>

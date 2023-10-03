@@ -8,10 +8,12 @@
 .container--pagination {
   // position: relative;
   // left: 27vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   margin-top: 20px;
+
+  // flex-grow: 1;
 }
 
 /* Pagination list styles */
@@ -31,6 +33,7 @@
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  margin: auto;
 }
 
 .pagination-button:hover {

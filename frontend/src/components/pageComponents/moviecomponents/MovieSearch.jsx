@@ -27,11 +27,16 @@ export default function MovieSearch({
           Search:
         </label>
         <input type="text" onChange={handleSearch} value={search} />
-        <input
+        {/* <input
           className="btn btn--stretched btn--accent searchbutton"
           type="submit"
           title="search"
-        />
+        /> */}
+        <div className="label-container">
+          <button className="btn btn--stretched" type="submit">
+            login
+          </button>
+        </div>
       </form>
     </div>
   );

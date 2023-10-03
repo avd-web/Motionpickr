@@ -238,25 +238,25 @@ a {
 }
 
 .btn--primary:hover {
-  background: #3a8ffd;
+  background: #400a18;
 }
 
 .btn--secondary {
-  background: var(--color-secondary);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .btn--secondary:hover {
-  background: #05cdf0;
+  background: var(--color-body-darker);
 }
 
 .btn--accent {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .btn--accent:hover {
-  background: #ec3000;
+  background: var(--color-body-darker);
 }
 
 .btn--outline {
@@ -667,6 +667,7 @@ a {
 
 /* Navigation Bar */
 .nav {
+  min-width: 400px;
   background: var(--color-black);
   display: flex;
   justify-content: space-around;
@@ -949,7 +950,7 @@ input[type="password"] {
 
 /* Style submit button */
 button[type="submit"] {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -959,7 +960,7 @@ button[type="submit"] {
 
 /* Style submit button on hover */
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: var(--color-body-darker);
 }
 
 /*EXTRA 2 random*/
@@ -981,6 +982,9 @@ button[type="submit"]:hover {
 }
 
 .container--movie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 400px;
   margin-top: 40px;
 }
@@ -1048,3 +1052,91 @@ td {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+/* .grid-layout {
+  display: grid;
+  grid-column: 25% 25% 25% 25%;
+} */
+
+.login-container {
+  margin: 2rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 columns with equal width */
+  grid-gap: 10px; /* Adjust spacing between items */
+  width: 80%; /* Adjust the width of the grid container as needed */
+  margin: 0 auto; /* Center the grid container on the page */
+  /* align-items: center; */
+  /* justify-items: center; */
+  justify-self: center;
+}
+
+.grid-item {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  border: 1px solid #ccc;
+  min-height: 15rem;
+  min-width: 15rem;
+  max-height: 15rem;
+  overflow: hidden;
+  /* align-items: center; */
+  /* justify-items: center; */
+  justify-self: center;
+}
+
+.grid-item p {
+  font-size: 1.2rem;
+}
+
+.grid-item h3 {
+  font-size: 2rem;
+}
+
+/* .movie-header {
+  display: flex;
+  min-width: 50vw;
+} */
+
+.genres {
+  display: flex;
+}
+
+.movie-overview-container {
+  min-width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.poster {
+  padding: 2rem;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+/* .movie-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+} */
+
+.description {
+  padding: 2rem;
+  min-width: 400px;
+  max-width: 400px;
+}
+
+.movie-header {
+  padding: 3rem;
+}
+
+/* .actor-container {
+  max-width: 400px;
+} */
