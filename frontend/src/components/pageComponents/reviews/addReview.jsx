@@ -1,6 +1,6 @@
 import axios, { Axios } from "axios";
 import React, { useState } from "react";
-import { AuthHeader } from "../../auth/authorization";
+import { AuthHeader } from "../../../auth/authorization";
 
 export default function AddReview({ id }) {
   const [review, setReview] = useState("");
@@ -66,5 +66,5 @@ export default function AddReview({ id }) {
         </form>
       </div>
     );
- } else return;
+  } else return;
 }

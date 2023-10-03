@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.movie-header {
+  position: relative;
+  bottom: 50%;
+  text-align: center;
+  margin: 5rem;
+}
+
+.description {
+  text-align: center;
+}
+
+.overview-text {
+  padding-right: 20rem;
+  padding-left: 20rem;
+  font-size: 30px;
+}
+
+.genres {
+  position: absolute;
+  width: 15rem;
+  height: 3rem;
+  top: 50%;
+  left: 75%;
+  padding: 10px;
+}
+
+.genre-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.genre-item {
+  border: 1px solid black;
+  border-width: 0.5rem;
+  outline: solid;
+  font-size: 20px;
+}
+
+.genre {
+  margin: 20px;
+}
+
+.actors-container {
+  text-align: center;
+  font-size: 30px;
+}
+
+.actors-container h3 {
+  margin: 20px;
+}
+
+.poster {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 2rem;
+  width: 50rem;
+  height: 50rem;
+  outline: outset darkblue;
+  left: 10%;
+  bottom: -10%;
+}

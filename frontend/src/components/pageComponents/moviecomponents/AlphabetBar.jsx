@@ -1,5 +1,5 @@
 
-import "../../styles/letter.scss";
+import "../../../styles/letter.scss";
 
 export default function AlphabetBar({moviePerletter, setCurrentLetter, setPage, currentletter}) {
 
