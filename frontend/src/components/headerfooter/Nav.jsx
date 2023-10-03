@@ -23,9 +23,11 @@ export default function Nav() {
           </div>
         ))}
       </div>
-      <div className="react-icon">
-        <BiSolidUserCircle size={50} />
-      </div>
+      <Link to="/account">
+        <div className="react-icon">
+          <BiSolidUserCircle size={50} />
+        </div>
+      </Link>
     </>
   );
 }
