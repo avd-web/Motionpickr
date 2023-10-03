@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.supportclasses;
+package com.ateam.motionpickr.security.supportclasses;
 
 import com.ateam.motionpickr.domain.cast.actor.Actor;
 import com.ateam.motionpickr.domain.cast.actor.ActorRepository;
@@ -8,7 +8,7 @@ import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.genre.GenreRepository;
 import com.ateam.motionpickr.domain.movie.Movie;
 import com.ateam.motionpickr.domain.movie.MovieRepository;
-import com.ateam.motionpickr.supportclasses.listParser.ParseCreditValues;
+import com.ateam.motionpickr.security.supportclasses.listParser.ParseCreditValues;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

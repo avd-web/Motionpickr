@@ -26,39 +26,17 @@ public class UserPreferences {
    @Column(name = "id", nullable = false)
    private Long id;
 
-   private Date inputDate;
 
-   @ManyToOne
+   @OneToOne
    @JoinColumn(name = "user_id")
    User user;
 
-    double maxPopularity;
 
-    double minPopularity;
-    double absMinPopularity;
-
-    @OneToMany
+    @ManyToMany
     Set<Genre> genres;
 
-    @OneToMany
+    @ManyToMany
     Set<Cast> castset;
 
-   public int evaluate(Movie movie, List<Cast> castList){
-       int count=0;
-
-       MovieMatcher matcher=new MovieMatcher(this);
-       count+=matcher.matchCast(castList);
-       count+= matcher.matchGenres(movie.getGenres());
-
-       if(!matcher.matchAbsolutePopularity(movie)){
-           if(!matcher.matchRelativePopularity(movie))
-               return  -1;
-           }
-       else count+=10;
-
-
-       return count;
-
-   }
 
 }

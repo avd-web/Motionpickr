@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.supportclasses;
+package com.ateam.motionpickr.security.supportclasses;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

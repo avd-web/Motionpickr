@@ -3,48 +3,24 @@ package com.ateam.motionpickr.userPreferences;
 import com.ateam.motionpickr.domain.cast.movieCast.Cast;
 import com.ateam.motionpickr.domain.genre.Genre;
 import com.ateam.motionpickr.domain.movie.Movie;
-import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Set;
 
+public class MovieMatcher {
+    public static boolean matchThis(Movie movie, Set<Genre> genres, Set<Cast>castList,List<Cast>checkCast){
 
-@AllArgsConstructor
-public  class MovieMatcher {
-   private UserPreferences preferences;
-
-    public int matchGenres(   Set<Genre> genres){
-
-        int count=0;
-        Set<Genre> preferredGenres=preferences.getGenres();
-        for(Genre genre:genres){
-            if(preferredGenres.contains(genre))
-                count++;
-
+        Set<Genre>genreSet=movie.getGenres();
+        for (Genre g:genres){
+            if(!genreSet.contains(g))
+                return false;
         }
-        return count;
-    }
 
-    public int matchCast(List<Cast> cast){
-        int count=0;
-        Set<Cast>prefferedCast=preferences.getCastset();
-        for (Cast c:cast){
-            if(prefferedCast.contains(c))
-                count++;
+        for(Cast c:castList){
+            if(!checkCast.contains(c)){
+                return false;
+            }
         }
-        return count;
-
+        return  true;
     }
-
-
-    public  boolean matchAbsolutePopularity(Movie movie){
-
-
-        return movie.getPopularity()>preferences.getAbsMinPopularity();
-    }
-    public  boolean matchRelativePopularity(Movie movie){
-
-        return movie.getPopularity()>preferences.getMinPopularity();
-    }
-
 }

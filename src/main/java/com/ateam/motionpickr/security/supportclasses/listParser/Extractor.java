@@ -1,4 +1,4 @@
-package com.ateam.motionpickr.supportclasses.listParser;
+package com.ateam.motionpickr.security.supportclasses.listParser;
 
 import java.util.ArrayList;
 import java.util.List;

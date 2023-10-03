@@ -14,11 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 public class UserPreferencesPto {
-    double maxPopularity;
-
-    double minPopularity;
-    double absMinPopularity;
-
     Set<Long> genres;
     Set<Long> castSet;
 }

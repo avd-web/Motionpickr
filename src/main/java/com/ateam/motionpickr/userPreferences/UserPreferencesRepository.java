@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserPreferencesRepository extends JpaRepository<UserPreferences,Long> {
-    UserPreferences findFirstByUserOrderByInputDateDesc(User user);
-    Optional<List<UserPreferences>> findByUser(User user);
+
+    Optional<UserPreferences>findByUser(User user);
+
+
 
 
 }
