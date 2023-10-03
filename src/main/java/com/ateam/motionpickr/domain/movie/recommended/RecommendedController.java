@@ -48,7 +48,10 @@ public class RecommendedController {
         User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
 
 
-        UserPreferences preferences=userPreferencesRepository.findByUser(userFrom).orElseThrow();
+       Optional <UserPreferences> preferencesOptional=userPreferencesRepository.findByUser(userFrom);
+
+       if(preferencesOptional.isEmpty()){return  new ArrayList<>();}
+       UserPreferences preferences=preferencesOptional.get();
 
         List<Movie>movies= movieRepository.findAll();
 
@@ -59,6 +62,17 @@ public class RecommendedController {
         }
 
         return  recommendedMovies;
+    }
+
+
+    @GetMapping("preferences")
+    public UserPreferences getPreferences(@AuthenticationPrincipal UserDetails details){
+        User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
+
+
+        Optional <UserPreferences> preferencesOptional=userPreferencesRepository.findByUser(userFrom);
+        return preferencesOptional.orElseThrow();
+
     }
 
     @PostMapping
