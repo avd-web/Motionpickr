@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Login from "../../pages/Login";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 export default function Nav() {
   var LinkData = [
     { name: "Movies", link: "/movie" },
     { name: "Recommended", link: "/recommended" },
-    { name: "Account", link: "/userpage" },
+    // { name: "Account", link: "/userpage" },
   ];
 
   return (
@@ -14,13 +15,17 @@ export default function Nav() {
       {/* <svg class="icon icon--white nav__toggler">
           <use xlink:href="images/sprite.svg#menu"></use>
         </svg> */}
-      <ul className="list nav__list">
+
+      <div className="list nav__list">
         {LinkData.map((LinkData) => (
-          <li className="nav__item" key={LinkData.name}>
+          <div className="nav__item" key={LinkData.name}>
             <Link to={LinkData.link}>{LinkData.name}</Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+      <div className="react-icon">
+        <BiSolidUserCircle size={50} />
+      </div>
     </>
   );
 }

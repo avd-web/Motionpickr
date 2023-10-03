@@ -12,7 +12,7 @@ export default function Hero() {
             <p className="hero__tagline">
               A quick and easy way to find the movie you want to watch!
             </p>
-            <button className="btn btn--stretched btn--secondary">login</button>
+            {/* <button className="btn btn--stretched btn--secondary">login</button> */}
           </header>
           {/* <picture data-aos="zoom-in">
             <source

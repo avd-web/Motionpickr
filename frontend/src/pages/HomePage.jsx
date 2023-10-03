@@ -3,6 +3,7 @@ import Login from "./Login";
 import { AuthHeader } from "../auth/authorization";
 import Hero from "../components/hero/Hero";
 import WatchList from "./watchList";
+import Recommended from "./userRecommended";
 
 export default function HomePage() {
   if (AuthHeader()) {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <>
         <Hero />
         <Login />
+        <Recommended />
       </>
     );
   }
