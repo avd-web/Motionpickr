@@ -7,6 +7,7 @@ export default function MovieOverview({ movie, genres, cast }) {
       <div className="poster">
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.posterLink}`}
+          onError={(e) => (e.target.src = "../src/assets/images/not-found.png")}
           alt=""
         />
       </div>
