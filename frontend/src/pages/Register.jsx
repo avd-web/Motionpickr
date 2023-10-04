@@ -75,64 +75,75 @@ export default function Register() {
 
   return (
     <div>
-      <h1> Register </h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username-input" value={user.name}>
-              Firstname:
-            </label>
-            <input
-              type="text"
-              onChange={handleFirstname}
-              value={user.firstname}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="username-input" value={user.name}>
-              Lastname:
-            </label>
-            <input
-              type="text"
-              onChange={handleLastname}
-              value={user.lastname}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="username-input" value={user.name}>
-              E-mail:
-            </label>
-            <input
-              type="text"
-              onChange={handleEmail}
-              value={user.email}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password-input"> Password: </label>
-            <input
-              type="password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              value={user.password}
-              onChange={handlePassword}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="second-password-input"> Re-enter password: </label>
-            <input
-              type="password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              value={user.secondpassword}
-              onChange={handleSecondPassword}
-              required
-            />
-            <input type="submit" />
-          </div>
-        </form>
+      <div className="login-container">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <h2> Register </h2>
+            <div className="label-container">
+              <div>
+                <label htmlFor="username-input" value={user.name}>
+                  Firstname:
+                </label>
+                <input
+                  type="text"
+                  onChange={handleFirstname}
+                  value={user.firstname}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="username-input" value={user.name}>
+                  Lastname:
+                </label>
+                <input
+                  type="text"
+                  onChange={handleLastname}
+                  value={user.lastname}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="username-input" value={user.name}>
+                  E-mail:
+                </label>
+                <input
+                  type="text"
+                  onChange={handleEmail}
+                  value={user.email}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="password-input"> Password: </label>
+                <input
+                  type="password"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  value={user.password}
+                  onChange={handlePassword}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="second-password-input">
+                  {" "}
+                  Re-enter password:{" "}
+                </label>
+                <input
+                  type="password"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  value={user.secondpassword}
+                  onChange={handleSecondPassword}
+                  required
+                />
+                {/* <input type="submit" /> */}
+              </div>
+
+              <button className="btn btn--stretched" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

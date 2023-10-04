@@ -10,7 +10,8 @@ import Recommended from "./pages/userRecommended";
 import GenreInfo from "./pages/GenreInfo";
 import Genre from "./pages/Genre";
 import "./styles/MAINstyles.css";
-import "./styles/normalize.css";
+// import "./styles/MainStyles.scss";
+// import "./styles/normalize.css";
 import UserPage from "./pages/UserPage";
 import WatchList from "./pages/watchList";
 
