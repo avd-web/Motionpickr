@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { AuthHeader } from "../auth/authorization";
 import AddReview from "../components/pageComponents/reviews/addReview";
 import ViewReviews from "../components/pageComponents/reviews/viewReviews";
 import Home from "../pages/HomePage";
