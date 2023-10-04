@@ -3,6 +3,7 @@ import Login from "./Login";
 import { AuthHeader } from "../auth/authorization";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AiFillStar } from "react-icons/ai";
 
 export default function Recommended() {
   const [topMovies, setTopMovies] = useState([{}]);
@@ -25,7 +26,9 @@ export default function Recommended() {
         <h1>Best movies:</h1>
         {topMovies.movies.map((movie) => (
           <Link to={"/movie/" + movie.id}>
-            <h2 key={movie.id}> - {movie.title}</h2>
+            <h2 key={movie.id}>
+              <AiFillStar /> {movie.title}
+            </h2>
           </Link>
         ))}
       </>
