@@ -5,36 +5,39 @@ import WatchList from "./watchList";
 import axios from "axios";
 
 export default function UserPage() {
-  const [user, setUser] = useState();
-
-  async function userInfo() {
-    if (sessionStorage.getItem("access_token")) {
-      const user = await axios.get(
-        `http://localhost:8080/api/v1/user`,
-        AuthHeader()
-      );
-
-      // const user = sessionStorage.getItem("access_token")
-      console.log(user.data);
-      setUser(user.data.user);
-    }
-  }
-
-  useEffect(() => {
-    userInfo();
-  }, []);
-
-  if (AuthHeader()) {
-    return (
-      <>
-        <WatchList />
-      </>
+  const getUser = async () => {
+    console.log(
+      await axios.get("http://localhost:8080/api/v1/watchlist", AuthHeader())
     );
-  } else {
-    return (
-      <>
-        <Login />
-      </>
-    );
-  }
+  };
+
+  return <>{getUser}</>;
+  // const [user, setUser] = useState();
+  // async function userInfo() {
+  //   if (sessionStorage.getItem("access_token")) {
+  //     const user = await axios.get(
+  //       `http://localhost:8080/api/v1/user`,
+  //       AuthHeader()
+  //     );
+  //     // const user = sessionStorage.getItem("access_token")
+  //     console.log(user.data);
+  //     setUser(user.data.user);
+  //   }
+  // }
+  // useEffect(() => {
+  //   userInfo();
+  // }, []);
+  // if (AuthHeader()) {
+  //   return (
+  //     <>
+  //       <WatchList />
+  //     </>
+  //   );
+  // } else {
+  //   return (
+  //     <>
+  //       <Login />
+  //     </>
+  //   );
+  // }
 }
