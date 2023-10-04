@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function MovieListItem({ movie, render, genres, cast }) {
-  if (render === "movielist") {
-    return (
+export default function MovieListItem({ movie }) {
+   return (
       <tr key={movie.id} className="movie-container">
         <td className="text-items item1"> {movie.title} </td>
         <td className="text-items item2"> {movie.tagline} </td>
@@ -18,4 +17,3 @@ export default function MovieListItem({ movie, render, genres, cast }) {
       </tr>
     );
   } 
-}
