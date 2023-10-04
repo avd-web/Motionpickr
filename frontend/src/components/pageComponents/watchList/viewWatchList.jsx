@@ -1,6 +1,8 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import { AuthHeader } from "../../../auth/authorization";
+import { Link } from "react-router-dom";
+import ViewMovie from "../../../pages/viewMovie";
 
 export default function ViewWatchList() {
   const [watchList, setwatchList] = useState([]);
@@ -22,15 +24,15 @@ export default function ViewWatchList() {
   return (
     <div className="watchlist-container">
       {watchList.map((item) => (
-        <div key={item.id} className="watchlist-container">
-          <h2> {item.title} </h2>
+        <div key={item.id} className="movie-header">
+          <Link to={"/movie/" + item.id}>
+            <h2> {item.title} </h2>
+          </Link>
           <div className="movie-container">
             <p> {item.tagline} </p>
-              {item.genres.map(genre => (
-                <div key={genre.id} className="genre-container">
-                  <p> {genre.name} </p>
-                </div>
-              ))}
+            {item.genres.map((genre) => (
+              <p className="movie-genres"> {genre.name} </p>
+            ))}
           </div>
         </div>
       ))}

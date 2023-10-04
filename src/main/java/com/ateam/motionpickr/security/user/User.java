@@ -83,16 +83,4 @@ public class User implements UserDetails {
         return true;
     }
 
-
-//    private String name,email;
-//    private char[] phoneNumber;
-//
-//    //many to many with self
-//    List<User> friends;
-//
-//    //many to many
-//    List<Movie>watchList;
-//
-//    //many to many
-//    List<Movie>likedMovies;
 }

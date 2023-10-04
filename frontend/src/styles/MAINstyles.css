@@ -1147,3 +1147,13 @@ td {
 .react-icon {
   color: white;
 }
+
+.genre-container {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-genres {
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
