@@ -25,7 +25,7 @@ public class SecurityConfiguration {
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**", "api/v1/movie/**", "api/v1/review/movie/{id}")
+                        .requestMatchers("/api/v1/auth/**", "api/v1/movie/**", "api/v1/review/movie/{id}","api/v1/recommended/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())

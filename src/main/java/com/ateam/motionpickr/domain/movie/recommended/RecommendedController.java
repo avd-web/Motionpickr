@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("api/v1/recommended")
 public class RecommendedController {
 
@@ -39,23 +40,21 @@ public class RecommendedController {
 
     @Autowired
     MovieRepository movieRepository;
+    private User userFrom;
 
 
-
-
-    @GetMapping(name = "movies")
+    @GetMapping("movies")
     public List<Movie>getRecommendedMovies(@AuthenticationPrincipal UserDetails details){
-        User userFrom=userRepository.findByEmail(details.getUsername()).orElseThrow();
-
+        User userFrom= userRepository.findByEmail(details.getUsername()).orElseThrow();
 
        Optional <UserPreferences> preferencesOptional=userPreferencesRepository.findByUser(userFrom);
 
        if(preferencesOptional.isEmpty()){return  new ArrayList<>();}
        UserPreferences preferences=preferencesOptional.get();
 
-        List<Movie>movies= movieRepository.findAll();
+       List<Movie>movies= movieRepository.findAll();
 
-        List<Movie>recommendedMovies= new ArrayList<>(100);
+       List<Movie>recommendedMovies= new ArrayList<>();
         for(Movie movie: movies){
             List<Cast>castList=castRepository.findByMovieId(movie.getId());
             if(MovieMatcher.matchThis(movie,preferences.getGenres(),preferences.getCastset(),  castList)) recommendedMovies.add(movie);
