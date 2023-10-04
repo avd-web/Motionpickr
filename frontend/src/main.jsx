@@ -13,11 +13,13 @@ import "./styles/MAINstyles.css";
 // import "./styles/MainStyles.scss";
 // import "./styles/normalize.css";
 import UserPage from "./pages/UserPage";
+import Logout from "./components/generalcomponent/Logout";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Header />
+
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/userpage" element={<UserPage />} />

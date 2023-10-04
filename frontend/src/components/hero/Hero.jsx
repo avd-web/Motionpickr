@@ -5,6 +5,13 @@ export default function Hero() {
     <>
       <section className="block block--dark block--skewed-left hero">
         <div className="container grid grid--1x2">
+          <div>
+            <img
+              className="hero__image"
+              src="../src/assets/images/hero_poster.png"
+              alt=""
+            />
+          </div>
           <header className="block__header hero__content">
             <h1 data-aos="fade-right" className="block__heading">
               Find your way, pick your movies!

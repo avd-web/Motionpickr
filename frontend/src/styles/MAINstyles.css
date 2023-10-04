@@ -34,6 +34,8 @@ html {
 
 img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 body {
@@ -670,7 +672,7 @@ a {
   min-width: 400px;
   background: var(--color-black);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   /* padding: 1rem; */
   align-items: center;
@@ -1067,7 +1069,7 @@ td {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 columns with equal width */
+  grid-template-columns: repeat(4, 25%); /* 3 columns with equal width */
   grid-gap: 10px; /* Adjust spacing between items */
   width: 80%; /* Adjust the width of the grid container as needed */
   margin: 0 auto; /* Center the grid container on the page */
@@ -1078,7 +1080,11 @@ td {
 
 .grid-item {
   background-color: #f0f0f0;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 20px; */
+
   text-align: center;
   font-size: 24px;
   border: 1px solid #ccc;
@@ -1086,9 +1092,9 @@ td {
   min-width: 15rem;
   max-height: 15rem;
   overflow: hidden;
-  /* align-items: center; */
-  /* justify-items: center; */
-  justify-self: center;
+  /* align-items: center;
+  justify-items: center;
+  justify-self: center; */
 }
 
 .grid-item p {
